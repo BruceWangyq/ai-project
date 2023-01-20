@@ -1,3 +1,4 @@
+import { setDefaultResultOrder } from "dns";
 import { NextPage } from "next";
 import { useState } from "react";
 import { UploadDropzone } from "react-uploader";
@@ -21,6 +22,8 @@ const options = {
 function restore({}: Props) {
   const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
   const [PhotoName, setPhotoName] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
   const UploadDropZone = () => {
     <UploadDropzone
@@ -37,6 +40,25 @@ function restore({}: Props) {
       height={300}
     />;
   };
+
+  async function generatePhoto(fileUrl: string) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setLoading(true);
+    const res = await fetch("/api/generate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ imageUrl: fileUrl }),
+    });
+    let newPhoto = await res.json();
+    if (res.status !== 200) {
+      setError(newPhoto);
+    } else {
+      setPhotoName(newPhoto);
+    }
+    setLoading(false);
+  }
 
   return <div>restore</div>;
 }
