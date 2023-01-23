@@ -1,5 +1,6 @@
 import { setDefaultResultOrder } from "dns";
 import { NextPage } from "next";
+import Head from "next/head";
 import { useState } from "react";
 import { UploadDropzone } from "react-uploader";
 import { Uploader } from "uploader";
@@ -19,7 +20,7 @@ const options = {
   styles: { colors: { primary: "#000" } },
 };
 
-function restore({}: Props) {
+const Home: NextPage<Props> = () => {
   const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
   const [PhotoName, setPhotoName] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -60,7 +61,18 @@ function restore({}: Props) {
     setLoading(false);
   }
 
-  return <div>restore</div>;
-}
+  return (
+    <div className="flex">
+      <Head>
+        <title>Restore</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <h1 className="mx-auto max-w-4xl font-bold text-4xl tracking-normal text-slate-900 sm:text-6xl mb-5 ">
+        Restore any face photo
+      </h1>
+      <ResizeablePanel></ResizeablePanel>
+    </div>
+  );
+};
 
-export default restore;
+export default Home;
