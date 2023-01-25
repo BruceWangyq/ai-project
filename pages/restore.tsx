@@ -26,13 +26,13 @@ const options = {
 const Home: NextPage<Props> = () => {
   const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
   const [restoredImage, setRestoredImage] = useState<string | null>(null);
-  const [PhotoName, setPhotoName] = useState<string | null>(null);
+  const [photoName, setPhotoName] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [sideBySide, setSideBySide] = useState<boolean>(false);
   const [restoredLoaded, setRestoredLoaded] = useState<boolean>(false);
 
-  const UploadDropZone = () => {
+  const UploadDropZone = () => (
     <UploadDropzone
       uploader={uploader}
       options={options}
@@ -45,8 +45,8 @@ const Home: NextPage<Props> = () => {
       }}
       width="670px"
       height="250px"
-    />;
-  };
+    />
+  );
 
   async function generatePhoto(fileUrl: string) {
     await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -61,8 +61,10 @@ const Home: NextPage<Props> = () => {
     let newPhoto = await res.json();
     if (res.status !== 200) {
       setError(newPhoto);
+      console.log("error", error);
     } else {
       setPhotoName(newPhoto);
+      console.log("photoName", photoName);
     }
     setLoading(false);
   }
