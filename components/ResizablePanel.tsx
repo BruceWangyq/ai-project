@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
-import React from "react";
 import useMeasure from "react-use-measure";
 
-type Props = {};
-
-function ResizeablePanel({ children }: { children: React.ReactNode }) {
+export default function ResizablePanel({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   let [ref, { height }] = useMeasure();
+
   return (
     <motion.div
       animate={height ? { height } : {}}
@@ -19,5 +21,3 @@ function ResizeablePanel({ children }: { children: React.ReactNode }) {
     </motion.div>
   );
 }
-
-export default ResizeablePanel;

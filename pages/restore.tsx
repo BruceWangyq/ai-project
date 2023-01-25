@@ -1,4 +1,3 @@
-import { setDefaultResultOrder } from "dns";
 import { AnimatePresence, motion } from "framer-motion";
 import { NextPage } from "next";
 import Head from "next/head";
@@ -6,9 +5,14 @@ import Image from "next/image";
 import { useState } from "react";
 import { UploadDropzone } from "react-uploader";
 import { Uploader } from "uploader";
-import ResizeablePanel from "../components/ResizeablePanel";
+import { CompareSlider } from "../components/CompareSlider";
 
-type Props = {};
+import Header from "../components/Header";
+import LoadingDots from "../components/LoadingDots";
+import ResizablePanel from "../components/ResizablePanel";
+import Toggle from "../components/Toggle";
+import appendNewToName from "../utils/appendNewToName";
+import downloadPhoto from "../utils/downloadPhoto";
 
 // Configuration for the uploader
 const uploader = Uploader({
@@ -23,14 +27,14 @@ const options = {
   styles: { colors: { primary: "#000" } },
 };
 
-const Home: NextPage<Props> = () => {
+const Home: NextPage = () => {
   const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
   const [restoredImage, setRestoredImage] = useState<string | null>(null);
-  const [photoName, setPhotoName] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
-  const [sideBySide, setSideBySide] = useState<boolean>(false);
   const [restoredLoaded, setRestoredLoaded] = useState<boolean>(false);
+  const [sideBySide, setSideBySide] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [photoName, setPhotoName] = useState<string | null>(null);
 
   const UploadDropZone = () => (
     <UploadDropzone
@@ -38,7 +42,6 @@ const Home: NextPage<Props> = () => {
       options={options}
       onUpdate={(file) => {
         if (file.length !== 0) {
-          console.log("file", file);
           setPhotoName(file[0].originalFile.originalFileName);
           setOriginalPhoto(file[0].fileUrl.replace("raw", "thumbnail"));
           generatePhoto(file[0].fileUrl.replace("raw", "thumbnail"));
@@ -50,7 +53,7 @@ const Home: NextPage<Props> = () => {
   );
 
   async function generatePhoto(fileUrl: string) {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 500));
     setLoading(true);
     const res = await fetch("/api/generate", {
       method: "POST",
@@ -59,30 +62,52 @@ const Home: NextPage<Props> = () => {
       },
       body: JSON.stringify({ imageUrl: fileUrl }),
     });
+
     let newPhoto = await res.json();
     if (res.status !== 200) {
       setError(newPhoto);
-      console.log("error", error);
     } else {
-      setPhotoName(newPhoto);
-      console.log("photoName", photoName);
+      setRestoredImage(newPhoto);
     }
     setLoading(false);
   }
 
   return (
-    <div className="flex">
+    <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>Restore</title>
+        <title>Restore Photos</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <Header />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4 sm:mb-0 mb-8">
-        <h1 className="mx-auto max-w-4xl font-bold text-4xl tracking-normal text-slate-900 sm:text-6xl mb-5 ">
+        <a
+          href="https://youtu.be/JcE-1xzQTE0"
+          target="_blank"
+          rel="noreferrer"
+          className="border rounded-2xl py-1 px-4 text-slate-500 text-sm mb-5 hover:scale-105 transition duration-300 ease-in-out"
+        >
+          Are you a developer and want to learn how I built this? Watch the{" "}
+          <span className="font-bold">YouTube tutorial</span>.
+        </a>
+        <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-900 sm:text-6xl mb-5">
           Restore any face photo
         </h1>
-        <ResizeablePanel>
+
+        <ResizablePanel>
           <AnimatePresence exitBeforeEnter>
             <motion.div className="flex justify-between items-center w-full flex-col mt-4">
+              <Toggle
+                className={`${restoredLoaded ? "visible" : "invisible"} mb-6`}
+                sideBySide={sideBySide}
+                setSideBySide={(newVal: any) => setSideBySide(newVal)}
+              />
+              {restoredLoaded && sideBySide && (
+                <CompareSlider
+                  original={originalPhoto!}
+                  restored={restoredImage!}
+                />
+              )}
               {!originalPhoto && <UploadDropZone />}
               {originalPhoto && !restoredImage && (
                 <Image
@@ -120,9 +145,55 @@ const Home: NextPage<Props> = () => {
                   </div>
                 </div>
               )}
+              {loading && (
+                <button
+                  disabled
+                  className="bg-black rounded-full text-white font-medium px-4 pt-2 pb-3 mt-8 hover:bg-black/80 w-40"
+                >
+                  <span className="pt-4">
+                    <LoadingDots color="white" style="large" />
+                  </span>
+                </button>
+              )}
+              {error && (
+                <div
+                  className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl mt-8"
+                  role="alert"
+                >
+                  <span className="block sm:inline">{error}</span>
+                </div>
+              )}
+              <div className="flex space-x-2 justify-center">
+                {originalPhoto && !loading && (
+                  <button
+                    onClick={() => {
+                      setOriginalPhoto(null);
+                      setRestoredImage(null);
+                      setRestoredLoaded(false);
+                      setError(null);
+                    }}
+                    className="bg-black rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-black/80 transition"
+                  >
+                    Upload New Photo
+                  </button>
+                )}
+                {restoredLoaded && (
+                  <button
+                    onClick={() => {
+                      downloadPhoto(
+                        restoredImage!,
+                        appendNewToName(photoName!)
+                      );
+                    }}
+                    className="bg-white rounded-full text-black border font-medium px-4 py-2 mt-8 hover:bg-gray-100 transition"
+                  >
+                    Download Restored Photo
+                  </button>
+                )}
+              </div>
             </motion.div>
           </AnimatePresence>
-        </ResizeablePanel>
+        </ResizablePanel>
       </main>
     </div>
   );
