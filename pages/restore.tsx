@@ -38,6 +38,7 @@ const Home: NextPage<Props> = () => {
       options={options}
       onUpdate={(file) => {
         if (file.length !== 0) {
+          console.log("file", file);
           setPhotoName(file[0].originalFile.originalFileName);
           setOriginalPhoto(file[0].fileUrl.replace("raw", "thumbnail"));
           generatePhoto(file[0].fileUrl.replace("raw", "thumbnail"));
