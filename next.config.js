@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
+    domains: ["upcdn.io", "replicate.delivery"],
     remotePatterns: [
       {
         protocol: "https",
