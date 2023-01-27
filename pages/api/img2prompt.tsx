@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
+
 type Data = string;
 interface ExtendedNextApiRequest extends NextApiRequest {
   body: {
@@ -46,8 +47,9 @@ export default async function handler(
       prompt = jsonFinalResponse.output;
     } else if (jsonFinalResponse.status === "failed") {
       break;
+    } else {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
     }
-    await new Promise((resolve) => setTimeout(resolve, 1000));
   }
   res.status(200).json(prompt ? prompt : "Failed to generate prompt");
 }
