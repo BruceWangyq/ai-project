@@ -43,7 +43,9 @@ const Home: NextPage = () => {
       onUpdate={(file) => {
         if (file.length !== 0) {
           setPhotoName(file[0].originalFile.originalFileName);
+          console.log("photoName", photoName);
           setOriginalPhoto(file[0].fileUrl.replace("raw", "thumbnail"));
+          console.log("originalPhoto", originalPhoto);
           generatePhoto(file[0].fileUrl.replace("raw", "thumbnail"));
         }
       }}

@@ -2,7 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["upcdn.io", "replicate.delivery"],
     remotePatterns: [
       {
         protocol: "https",
@@ -11,6 +10,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "replicate.delivery",
+      },
+      {
+        protocol: "https",
+        hostname: "upcdn.io",
       },
     ],
   },
