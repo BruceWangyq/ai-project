@@ -82,7 +82,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <Header /> */}
+      <Header />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4 sm:mb-0 mb-8">
         <a
           href="https://youtu.be/JcE-1xzQTE0"
@@ -153,9 +153,9 @@ const Home: NextPage = () => {
                   disabled
                   className="bg-black rounded-full text-white font-medium px-4 pt-2 pb-3 mt-8 hover:bg-black/80 w-40"
                 >
-                  {/* <span className="pt-4">
+                  <span className="pt-4">
                     <LoadingDots color="white" style="large" />
-                  </span> */}
+                  </span>
                 </button>
               )}
               {error && (
@@ -180,7 +180,7 @@ const Home: NextPage = () => {
                     Upload New Photo
                   </button>
                 )}
-                {/* {restoredLoaded && (
+                {restoredLoaded && (
                   <button
                     onClick={() => {
                       downloadPhoto(
@@ -192,7 +192,7 @@ const Home: NextPage = () => {
                   >
                     Download Restored Photo
                   </button>
-                )} */}
+                )}
               </div>
             </motion.div>
           </AnimatePresence>
