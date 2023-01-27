@@ -4,7 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import { UploadDropzone } from "react-uploader";
-import { Uploader } from "uploader";
+import { uploader, options } from "../utils/uploader";
 import { CompareSlider } from "../components/CompareSlider";
 
 import Header from "../components/Header";
@@ -13,19 +13,6 @@ import ResizablePanel from "../components/ResizablePanel";
 import Toggle from "../components/Toggle";
 import appendNewToName from "../utils/appendNewToName";
 import downloadPhoto from "../utils/downloadPhoto";
-
-// Configuration for the uploader
-const uploader = Uploader({
-  apiKey: !!process.env.NEXT_PUBLIC_UPLOAD_API_KEY
-    ? process.env.NEXT_PUBLIC_UPLOAD_API_KEY
-    : "free",
-});
-const options = {
-  maxFileCount: 1,
-  mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
-  editor: { images: { crop: false } },
-  styles: { colors: { primary: "#000" } },
-};
 
 const Home: NextPage = () => {
   const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
@@ -42,6 +29,7 @@ const Home: NextPage = () => {
       options={options}
       onUpdate={(file) => {
         if (file.length !== 0) {
+          console.log("file", file);
           setPhotoName(file[0].originalFile.originalFileName);
           console.log("photoName", photoName);
           setOriginalPhoto(file[0].fileUrl.replace("raw", "thumbnail"));
