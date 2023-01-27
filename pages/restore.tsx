@@ -57,7 +57,7 @@ const Home: NextPage = () => {
   async function generatePhoto(fileUrl: string) {
     await new Promise((resolve) => setTimeout(resolve, 500));
     setLoading(true);
-    const res = await fetch("/api/generate", {
+    const res = await fetch("/api/restore", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
