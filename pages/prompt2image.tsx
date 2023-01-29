@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { isConstructorDeclaration, JSDocNullableType } from "typescript";
+import { NextPage } from "next";
 
 interface Prediction {
   id: string;
@@ -12,7 +13,7 @@ interface Prediction {
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-export default function Home() {
+const Home: NextPage = () => {
   const [prediction, setPrediction] = useState<Prediction | null>(null);
   const [error, setError] = useState(null);
 
@@ -51,14 +52,53 @@ export default function Home() {
   };
 
   return (
-    <div className="p-8 text-lg max-w-3xl m-auto bg-black">
+    <div className="p-8 text-lg max-w-3xl m-auto">
       <Head>
         <title>Replicate + Next.js</title>
       </Head>
 
-      <h1 className="mt-8 bg-gradient-to-br from-white via-[#f5eaef] to-[#5f4a54] bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl">
-        A little AI tool that you can use!
-      </h1>
+      <p>
+        Dream something with{" "}
+        <a href="https://replicate.com/stability-ai/stable-diffusion">
+          stability-ai/stable-diffusion
+        </a>
+        :
+      </p>
+
+      <form className="flex mb-8" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="prompt"
+          placeholder="Enter a prompt to display an image"
+          className="w-full p-4 border-2 border-gray-300 rounded-full text-lg mr-5"
+        />
+        <button
+          type="submit"
+          className="p-4 border-none rounded-md box-border cursor-pointer text-lg bg-gray-300 hover:bg-gray-400"
+        >
+          Go!
+        </button>
+      </form>
+
+      {error && <div>{error}</div>}
+
+      {prediction && (
+        <div>
+          {prediction.output && (
+            <div className="w-full aspect-square relative">
+              <Image
+                fill
+                src={prediction.output[prediction.output.length - 1]}
+                alt="output"
+                sizes="100vw"
+              />
+            </div>
+          )}
+          <p>status: {prediction.status}</p>
+        </div>
+      )}
     </div>
   );
-}
+};
+
+export default Home;

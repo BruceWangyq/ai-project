@@ -74,7 +74,7 @@ export default async function handler(
     } else if (jsonFinalResponse.status === "failed") {
       break;
     } else {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 3000));
     }
   }
   res.status(200).json(prompt ? prompt : "Failed to generate prompt");
