@@ -12,6 +12,7 @@ specifiers:
   autoprefixer: ^10.4.13
   eslint: 8.31.0
   eslint-config-next: 13.1.1
+  eventsource-parser: ^0.1.0
   framer-motion: ^8.5.0
   next: 13.1.1
   postcss: ^8.4.21
@@ -35,6 +36,7 @@ dependencies:
   '@upstash/redis': 1.19.3
   eslint: 8.31.0
   eslint-config-next: 13.1.1_iukboom6ndih5an6iafl45j2fe
+  eventsource-parser: 0.1.0
   framer-motion: 8.5.0_biqbaboplfbrettd7655fr4n2y
   next: 13.1.1_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
@@ -1238,6 +1240,11 @@ packages:
   /esutils/2.0.3:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
     engines: {node: '>=0.10.0'}
+    dev: false
+
+  /eventsource-parser/0.1.0:
+    resolution: {integrity: sha512-M9QjFtEIkwytUarnx113HGmgtk52LSn3jNAtnWKi3V+b9rqSfQeVdLsaD5AG/O4IrGQwmAAHBIsqbmURPTd2rA==}
+    engines: {node: '>=14.18'}
     dev: false
 
   /fast-deep-equal/3.1.3:
