@@ -78,7 +78,7 @@ const Home: NextPage = () => {
         <div className="max-w-xl w-full">
           <div className="flex mt-10 items-center space-x-3 justify-center">
             <p className="text-left font-medium">
-              Input your text below and we'll correct it for you.
+              Input your text below and we&apos;ll correct it for you.
             </p>
           </div>
           <textarea
@@ -121,7 +121,7 @@ const Home: NextPage = () => {
                 <>
                   <div>
                     <h2 className="sm:text-4xl text-3xl font-bold text-slate-900 mx-auto">
-                      Here is your corrected text.
+                      Here&apos;s your corrected text.
                     </h2>
                   </div>
                   <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
