@@ -11,16 +11,20 @@ import ResizablePanel from "../components/ResizablePanel";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
-  const [prompt, setPrompt] = useState("");
+  const [input, setInput] = useState("");
   const [generatedBios, setGeneratedBios] = useState<String>("");
 
   console.log("Streamed response: ", generatedBios);
+
+  const prompt = `Correct this to standard English: ${input}${
+    input.slice(-1) === "." ? "" : "."
+  }`;
 
   const generateBio = async (e: any) => {
     e.preventDefault();
     setGeneratedBios("");
     setLoading(true);
-    const response = await fetch("/api/generate", {
+    const response = await fetch("/api/grammar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,6 +41,7 @@ const Home: NextPage = () => {
 
     // This data is a ReadableStream
     const data = response.body;
+    console.log(data);
     if (!data) {
       return;
     }
@@ -50,6 +55,7 @@ const Home: NextPage = () => {
       done = doneReading;
       const chunkValue = decoder.decode(value);
       setGeneratedBios((prev) => prev + chunkValue);
+      console.log(generatedBios);
     }
 
     setLoading(false);
@@ -70,13 +76,6 @@ const Home: NextPage = () => {
         <p className="text-slate-500 mt-5">18,167 bios generated so far.</p>
         <div className="max-w-xl w-full">
           <div className="flex mt-10 items-center space-x-3">
-            <Image
-              src="/1-black.png"
-              width={30}
-              height={30}
-              alt="1 icon"
-              className="mb-5 sm:mb-0"
-            />
             <p className="text-left font-medium">
               Copy your current bio{" "}
               <span className="text-slate-500">
@@ -86,8 +85,8 @@ const Home: NextPage = () => {
             </p>
           </div>
           <textarea
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
             rows={4}
             className="w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black my-5"
             placeholder={
@@ -95,7 +94,6 @@ const Home: NextPage = () => {
             }
           />
           <div className="flex mb-5 items-center space-x-3">
-            <Image src="/2-black.png" width={30} height={30} alt="1 icon" />
             <p className="text-left font-medium">Select your vibe.</p>
           </div>
 
