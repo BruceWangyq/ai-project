@@ -41,7 +41,7 @@ const Home: NextPage = () => {
 
     // This data is a ReadableStream
     const data = response.body;
-    console.log(data);
+    console.log("data: ", data);
     if (!data) {
       return;
     }
@@ -54,8 +54,9 @@ const Home: NextPage = () => {
       const { value, done: doneReading } = await reader.read();
       done = doneReading;
       const chunkValue = decoder.decode(value);
+      console.log("chunkValue: ", chunkValue);
       setGeneratedBios((prev) => prev + chunkValue);
-      console.log(generatedBios);
+      console.log("generatedBios: ", generatedBios);
     }
 
     setLoading(false);
