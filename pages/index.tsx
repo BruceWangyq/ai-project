@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { isConstructorDeclaration, JSDocNullableType } from "typescript";
+import Layout from "../components/layout";
 
 interface Prediction {
   id: string;
@@ -51,14 +52,12 @@ export default function Home() {
   };
 
   return (
-    <div className="p-8 text-lg max-w-3xl m-auto bg-black">
-      <Head>
-        <title>Replicate + Next.js</title>
-      </Head>
-
-      <h1 className="mt-8 bg-gradient-to-br from-white via-[#f5eaef] to-[#5f4a54] bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl">
-        A little AI tool that you can use!
-      </h1>
-    </div>
+    <Layout>
+      <div className="p-8 text-lg max-w-3xl m-auto">
+        <h1 className="mt-8 bg-gradient-to-br from-black via-slate-500 to-slate-200 dark:from-white dark:via-[#f5eaef] dark:to-[#5f4a54] bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl">
+          A little AI Project that you can use!
+        </h1>
+      </div>
+    </Layout>
   );
 }
