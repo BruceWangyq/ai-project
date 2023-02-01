@@ -50,7 +50,7 @@ export default function Layout({
                 onClick={() => setOpenPopover(!openPopover)}
                 className="flex w-40 items-center justify-between rounded-md  px-4 py-2 transition-all duration-75 hover:border-gray-800 focus:outline-none active:bg-gray-100"
               >
-                <p className="text-gray-600">GPT 3</p>
+                <p className="text-gray-600">AI Text</p>
                 <ChevronDown
                   className={`h-4 w-4 text-gray-600 transition-all ${
                     openPopover ? "rotate-180" : ""
@@ -73,6 +73,12 @@ export default function Layout({
                   >
                     Image to Prompt
                   </Link>
+                  <Link
+                    href="/restore"
+                    className="flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100 active:bg-gray-200"
+                  >
+                    Restore Image
+                  </Link>
                 </div>
               }
               openPopover={openPopover}
@@ -82,7 +88,7 @@ export default function Layout({
                 onClick={() => setOpenPopover(!openPopover)}
                 className="flex w-40 items-center justify-between rounded-md  px-4 py-2 transition-all duration-75 hover:border-gray-800 focus:outline-none active:bg-gray-100"
               >
-                <p className="text-gray-600">Stable Diffusion</p>
+                <p className="text-gray-600">AI Image</p>
                 <ChevronDown
                   className={`h-4 w-4 text-gray-600 transition-all ${
                     openPopover ? "rotate-180" : ""
