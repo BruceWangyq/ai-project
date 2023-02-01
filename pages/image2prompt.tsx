@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import { UploadDropzone } from "react-uploader";
+import Layout from "../components/layout";
 import { options, uploader } from "../utils/uploader";
 
 const Home: NextPage = () => {
@@ -50,7 +51,7 @@ const Home: NextPage = () => {
   }
 
   return (
-    <div>
+    <Layout>
       <Head>
         <title>Image2Prompt</title>
       </Head>
@@ -82,7 +83,7 @@ const Home: NextPage = () => {
           </div>
         )}
       </main>
-    </div>
+    </Layout>
   );
 };
 

@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { isConstructorDeclaration, JSDocNullableType } from "typescript";
 import { NextPage } from "next";
+import Layout from "../components/layout";
 
 interface Prediction {
   id: string;
@@ -52,52 +53,50 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div className="p-8 text-lg max-w-3xl m-auto">
-      <Head>
-        <title>Replicate + Next.js</title>
-      </Head>
+    <Layout>
+      <div className="p-8 text-lg max-w-3xl m-auto">
+        <p>
+          Dream something with{" "}
+          <a href="https://replicate.com/stability-ai/stable-diffusion">
+            stability-ai/stable-diffusion
+          </a>
+          :
+        </p>
 
-      <p>
-        Dream something with{" "}
-        <a href="https://replicate.com/stability-ai/stable-diffusion">
-          stability-ai/stable-diffusion
-        </a>
-        :
-      </p>
+        <form className="flex mb-8" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="prompt"
+            placeholder="Enter a prompt to display an image"
+            className="w-full p-4 border-2 border-gray-300 rounded-full text-lg mr-5"
+          />
+          <button
+            type="submit"
+            className="p-4 border-none rounded-md box-border cursor-pointer text-lg bg-gray-300 hover:bg-gray-400"
+          >
+            Go!
+          </button>
+        </form>
 
-      <form className="flex mb-8" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="prompt"
-          placeholder="Enter a prompt to display an image"
-          className="w-full p-4 border-2 border-gray-300 rounded-full text-lg mr-5"
-        />
-        <button
-          type="submit"
-          className="p-4 border-none rounded-md box-border cursor-pointer text-lg bg-gray-300 hover:bg-gray-400"
-        >
-          Go!
-        </button>
-      </form>
+        {error && <div>{error}</div>}
 
-      {error && <div>{error}</div>}
-
-      {prediction && (
-        <div>
-          {prediction.output && (
-            <div className="w-full aspect-square relative">
-              <Image
-                fill
-                src={prediction.output[prediction.output.length - 1]}
-                alt="output"
-                sizes="100vw"
-              />
-            </div>
-          )}
-          <p>status: {prediction.status}</p>
-        </div>
-      )}
-    </div>
+        {prediction && (
+          <div>
+            {prediction.output && (
+              <div className="w-full aspect-square relative">
+                <Image
+                  fill
+                  src={prediction.output[prediction.output.length - 1]}
+                  alt="output"
+                  sizes="100vw"
+                />
+              </div>
+            )}
+            <p>status: {prediction.status}</p>
+          </div>
+        )}
+      </div>
+    </Layout>
   );
 };
 
