@@ -21,7 +21,7 @@ export default function Header() {
             <div className="w-full rounded-md bg-white dark:bg-black p-2 sm:w-40">
               <Link
                 href="/grammarcorrection"
-                className="flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm dark:text-gray-200 transition-all duration-75 hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-gray-700 dark:active:bg-gray-600"
+                className="flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm dark:text-gray-200 transition-all duration-75 hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-gray-800 dark:active:bg-gray-700"
               >
                 Grammar Correction
               </Link>
@@ -32,9 +32,9 @@ export default function Header() {
         >
           <button
             onClick={() => setOpenPopover(!openPopover)}
-            className="flex w-40 items-center justify-between rounded-md  px-4 py-2 transition-all duration-75 hover:border-gray-800 focus:outline-none active:bg-gray-100 dark:hover:bg-gray-700 dark:active:bg-gray-600"
+            className="flex w-40 items-center justify-between rounded-md  px-4 py-2 transition-all duration-75 hover:border-gray-800 focus:outline-none active:bg-gray-100 dark:hover:bg-gray-800 dark:active:bg-gray-700"
           >
-            <p className="text-gray-600 dark:text-gray-200">AI Text</p>
+            <p className="text-gray-600 dark:text-gray-200 pl-8">AI Text</p>
             <ChevronDown
               className={`h-4 w-4 text-gray-600 dark:text-gray-200 transition-all ${
                 openPopover ? "rotate-180" : ""
@@ -47,19 +47,19 @@ export default function Header() {
             <div className="w-full rounded-md bg-white dark:bg-black p-2 sm:w-40">
               <Link
                 href="/prompt2image"
-                className="flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm dark:text-gray-200 transition-all duration-75 hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-gray-700 dark:active:bg-gray-600"
+                className="flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm dark:text-gray-200 transition-all duration-75 hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-gray-800 dark:active:bg-gray-700"
               >
                 Prompt to Image
               </Link>
               <Link
                 href="/image2prompt"
-                className="flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm dark:text-gray-200 transition-all duration-75 hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-gray-700 dark:active:bg-gray-600"
+                className="flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm dark:text-gray-200 transition-all duration-75 hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-gray-800 dark:active:bg-gray-700"
               >
                 Image to Prompt
               </Link>
               <Link
                 href="/restore"
-                className="flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm dark:text-gray-200 transition-all duration-75 hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-gray-700 dark:active:bg-gray-600"
+                className="flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm dark:text-gray-200 transition-all duration-75 hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-gray-800 dark:active:bg-gray-700"
               >
                 Restore Image
               </Link>
@@ -70,9 +70,9 @@ export default function Header() {
         >
           <button
             onClick={() => setOpenPopover(!openPopover)}
-            className="flex w-40 items-center justify-between rounded-md  px-4 py-2 transition-all duration-75 hover:border-gray-800 focus:outline-none active:bg-gray-100 dark:hover:bg-gray-700 dark:active:bg-gray-600"
+            className="flex w-40 items-center justify-between rounded-md  px-4 py-2 transition-all duration-75 hover:border-gray-800 focus:outline-none active:bg-gray-100 dark:hover:bg-gray-800 dark:active:bg-gray-700"
           >
-            <p className="text-gray-600 dark:text-gray-200">AI Image</p>
+            <p className="text-gray-600 dark:text-gray-200 pl-8">AI Image</p>
             <ChevronDown
               className={`h-4 w-4 text-gray-600 dark:text-gray-200 transition-all ${
                 openPopover ? "rotate-180" : ""

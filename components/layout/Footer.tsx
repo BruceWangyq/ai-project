@@ -5,34 +5,34 @@ export default function Footer() {
     <footer className="text-center h-16 sm:h-20 w-full sm:pt-2 pt-4 border-t dark:border-t-stone-200 mt-5 flex sm:flex-row flex-col justify-between items-center px-16 space-y-3 sm:mb-0 mb-3">
       <div className="text-black dark:text-white">
         Powered by{" "}
-        <a
+        <Link
           href="https://replicate.com/"
           target="_blank"
           rel="noreferrer"
           className="font-bold hover:underline transition underline-offset-2"
         >
           Replicate
-        </a>
+        </Link>
         ,{" "}
-        <a
+        <Link
           href="https://platform.openai.com"
           target="_blank"
           rel="noreferrer"
           className="font-bold hover:underline transition underline-offset-2"
         >
           OpenAI{" "}
-        </a>
+        </Link>
         and{" "}
-        <a
+        <Link
           href="https://vercel.com/"
           target="_blank"
           rel="noreferrer"
           className="font-bold hover:underline transition underline-offset-2"
         >
           Vercel.
-        </a>
+        </Link>
       </div>
-      <div className="flex space-x-4 pb-4 sm:pb-0">
+      <div className="flex space-x-4 pb-4">
         <Link
           href="https://twitter.com/brucewangdev"
           target={"_blank"}
@@ -47,7 +47,8 @@ export default function Footer() {
           </svg>
         </Link>
         <Link
-          href="https://github.com/Nutlope/restorePhotos"
+          href="https://github.com/BruceWangyq/ai-project"
+          target={"_blank"}
           className="group"
           aria-label="GitHub"
         >

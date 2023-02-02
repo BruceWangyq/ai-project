@@ -52,37 +52,32 @@ const Home: NextPage = () => {
 
   return (
     <Layout>
-      <Head>
-        <title>Image2Prompt</title>
-      </Head>
-      <main>
-        <h1>Image2Prompt</h1>
-        {!originalPhoto && <UploadDropZone />}
-        {originalPhoto && (
-          <div>
-            <Image
-              src={originalPhoto}
-              alt="originalPhoto"
-              className="rounded-2xl relative"
-              width={475}
-              height={475}
-            />
-            <button
-              className="bordered-full bg-black text-white font-medium px-4 pt-2 pb-3 mt-8 hover:bg-black/80 w-40"
-              onClick={() => {
-                setOriginalPhoto(null), setPrompt(null);
-              }}
-            >
-              Upload new photo
-            </button>
-          </div>
-        )}
-        {prompt && (
-          <div>
-            <p>{prompt}</p>
-          </div>
-        )}
-      </main>
+      <h1>Image2Prompt</h1>
+      {!originalPhoto && <UploadDropZone />}
+      {originalPhoto && (
+        <div>
+          <Image
+            src={originalPhoto}
+            alt="originalPhoto"
+            className="rounded-2xl relative"
+            width={475}
+            height={475}
+          />
+          <button
+            className="bordered-full bg-black text-white font-medium px-4 pt-2 pb-3 mt-8 hover:bg-black/80 w-40"
+            onClick={() => {
+              setOriginalPhoto(null), setPrompt(null);
+            }}
+          >
+            Upload new photo
+          </button>
+        </div>
+      )}
+      {prompt && (
+        <div>
+          <p>{prompt}</p>
+        </div>
+      )}
     </Layout>
   );
 };
