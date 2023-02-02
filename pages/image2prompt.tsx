@@ -52,7 +52,9 @@ const Home: NextPage = () => {
 
   return (
     <Layout>
-      <h1>Image2Prompt</h1>
+      <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-900 dark:text-slate-200 sm:text-6xl mb-5 text-center">
+        Turn your photo into a prompt
+      </h1>
       {!originalPhoto && <UploadDropZone />}
       {originalPhoto && (
         <div>
