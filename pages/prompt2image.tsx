@@ -17,6 +17,9 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 const Home: NextPage = () => {
   const [prediction, setPrediction] = useState<Prediction | null>(null);
   const [error, setError] = useState(null);
+  const [input, setInput] = useState(
+    "An astronaut riding a octopus on moon artstation, hd, dramatic"
+  );
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -26,7 +29,7 @@ const Home: NextPage = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        prompt: e.target.prompt.value,
+        prompt: input,
       }),
     });
     let prediction = await response.json();
@@ -55,16 +58,24 @@ const Home: NextPage = () => {
   return (
     <Layout>
       <div className="p-8  max-w-3xl m-auto">
-        <h1 className="sm:text-6xl text-4xl max-w-2xl font-bold text-slate-900 dark:text-slate-100 text-center mb-8">
+        <h1 className="sm:text-6xl text-4xl max-w-2xl font-bold text-slate-900 dark:text-slate-100 text-center mb-4">
           Dream something with Stable-Diffusion
         </h1>
 
+        <div className="flex mt-10 items-center space-x-3 justify-center mb-4">
+          <p className="text-left  font-medium text-slate-900 dark:text-slate-100">
+            Input your text below and we&apos;ll correct it for you.
+          </p>
+        </div>
+
         <form className="flex mb-8" onSubmit={handleSubmit}>
-          <input
-            type="text"
+          <textarea
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
             name="prompt"
-            placeholder="Enter a prompt to display an image"
-            className="w-full p-4 border-2 border-gray-300 rounded-full text-lg mr-5"
+            placeholder=" e.g. An astronaut riding a octopus on moon artstation, hd, dramatic
+            lighting, detailed"
+            className="w-full p-2 border-2 border-gray-300 rounded-md text-lg mr-4 shadow-sm focus:border-black focus:ring-black"
           />
           <button
             type="submit"
