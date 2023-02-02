@@ -54,14 +54,10 @@ const Home: NextPage = () => {
 
   return (
     <Layout>
-      <div className="p-8 text-lg max-w-3xl m-auto">
-        <p>
-          Dream something with{" "}
-          <a href="https://replicate.com/stability-ai/stable-diffusion">
-            stability-ai/stable-diffusion
-          </a>
-          :
-        </p>
+      <div className="p-8  max-w-3xl m-auto">
+        <h1 className="sm:text-6xl text-4xl max-w-2xl font-bold text-slate-900 dark:text-slate-100 text-center my-4">
+          Dream something with Stable-Diffusion
+        </h1>
 
         <form className="flex mb-8" onSubmit={handleSubmit}>
           <input

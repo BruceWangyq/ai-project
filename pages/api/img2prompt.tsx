@@ -42,7 +42,7 @@ export default async function handler(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Token " + process.env.REPLICATE_API_KEY,
+      Authorization: `Token ${process.env.REPLICATE_API_KEY}`,
     },
     body: JSON.stringify({
       // Pinned to a specific version of Stable Diffusion
