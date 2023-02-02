@@ -53,7 +53,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <div className="p-8 text-lg max-w-3xl m-auto">
+      <div className="flex flex-col">
         <h1 className="mt-8 bg-gradient-to-br from-black via-slate-500 to-slate-400 dark:from-white dark:via-[#f5eaef] dark:to-[#5f4a54] bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl">
           A little AI Project that you can use!
         </h1>
