@@ -17,9 +17,7 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 const Home: NextPage = () => {
   const [prediction, setPrediction] = useState<Prediction | null>(null);
   const [error, setError] = useState(null);
-  const [input, setInput] = useState(
-    "An astronaut riding a octopus on moon artstation, hd, dramatic"
-  );
+  const [input, setInput] = useState("");
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();

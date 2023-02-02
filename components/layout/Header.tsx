@@ -51,12 +51,12 @@ export default function Header() {
               >
                 Prompt to Image
               </Link>
-              <Link
+              {/* <Link
                 href="/image2prompt"
                 className="flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm dark:text-gray-200 transition-all duration-75 hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-gray-800 dark:active:bg-gray-700"
               >
                 Image to Prompt
-              </Link>
+              </Link> */}
               <Link
                 href="/restore"
                 className="flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm dark:text-gray-200 transition-all duration-75 hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-gray-800 dark:active:bg-gray-700"
