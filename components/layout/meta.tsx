@@ -4,7 +4,7 @@ const DOMAIN = "https://ai-project-three.vercel.app";
 
 export default function Meta({
   title = "An AI Project",
-  description = "Precedent is the all-in-one solution for your Next.js project. It includes a design system, authentication, analytics, and more.",
+  description = "This is an AI project that you can use to generate image, fix grammar and restore image.",
   image = `${DOMAIN}/api/og`,
 }: {
   title?: string;
