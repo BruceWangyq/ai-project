@@ -3,8 +3,8 @@ import Head from "next/head";
 const DOMAIN = "https://ai-project-three.vercel.app";
 
 export default function Meta({
-  title = "An AI Project",
-  description = "This is an AI project that you can use to generate image, fix grammar and restore image.",
+  title = "An AI Startup",
+  description = "This is an AI startup that you can use to generate image, fix grammar and restore image.",
   image = `${DOMAIN}/api/og`,
 }: {
   title?: string;
@@ -14,6 +14,7 @@ export default function Meta({
   return (
     <Head>
       <title>{title}</title>
+
       <meta name="description" content={description} />
       <link rel="icon" href="/favicon.ico" />
 
