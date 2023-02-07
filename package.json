@@ -17,6 +17,7 @@
     "@types/react-dom": "18.0.10",
     "@upstash/ratelimit": "^0.1.5",
     "@upstash/redis": "^1.19.3",
+    "@vercel/analytics": "^0.1.8",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "eventsource-parser": "^0.1.0",
