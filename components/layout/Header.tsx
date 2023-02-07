@@ -1,118 +1,136 @@
 import Link from "next/link";
-import Popover from "../Popover";
-import { ChevronDown } from "lucide-react";
-import React from "react";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import menuData from "./menuData";
+import React, { useEffect } from "react";
+import { Menu, X } from "lucide-react";
+
+import { useState } from "react";
+import ThemeToggler from "../ThemeToggler";
 
 export default function Header() {
-  const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  const [openPopover, setOpenPopover] = useState(false);
-  useEffect(() => setMounted(true), []);
+  // Navbar toggle
+  const [navbarOpen, setNavbarOpen] = useState(false);
+  const navbarToggleHandler = () => {
+    setNavbarOpen(!navbarOpen);
+  };
+
+  // submenu handler
+  const [openIndex, setOpenIndex] = useState(-1);
+  const handleSubmenu = (index: number) => {
+    if (openIndex === index) {
+      setOpenIndex(-1);
+    } else {
+      setOpenIndex(index);
+    }
+  };
+
+  // Sticky Navbar
+  const [sticky, setSticky] = useState(false);
+  const handleStickyNavbar = () => {
+    if (window.scrollY >= 80) {
+      setSticky(true);
+    } else {
+      setSticky(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleStickyNavbar);
+  });
+
   return (
-    <div className="mx-auto flex h-16 min-w-full items-center justify-around">
-      <Link href="/">
-        <h1 className="text-xl text-black dark:text-white">An AI Project</h1>
-      </Link>
-      <div className="flex">
-        <Popover
-          content={
-            <div className="w-full rounded-md bg-white dark:bg-black p-2 sm:w-40">
-              <Link
-                href="/grammarcorrection"
-                className="flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm dark:text-gray-200 transition-all duration-75 hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-gray-800 dark:active:bg-gray-700"
-              >
-                Grammar Correction
-              </Link>
-            </div>
-          }
-          openPopover={openPopover}
-          setOpenPopover={setOpenPopover}
-        >
-          <button
-            onClick={() => setOpenPopover(!openPopover)}
-            className="flex w-40 items-center justify-between rounded-md  px-4 py-2 transition-all duration-75 hover:border-gray-800 focus:outline-none active:bg-gray-100 dark:hover:bg-gray-800 dark:active:bg-gray-700"
-          >
-            <p className="text-gray-600 dark:text-gray-200 pl-8">AI Text</p>
-            <ChevronDown
-              className={`h-4 w-4 text-gray-600 dark:text-gray-200 transition-all ${
-                openPopover ? "rotate-180" : ""
-              }`}
-            />
-          </button>
-        </Popover>
-        <Popover
-          content={
-            <div className="w-full rounded-md bg-white dark:bg-black p-2 sm:w-40">
-              <Link
-                href="/prompt2image"
-                className="flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm dark:text-gray-200 transition-all duration-75 hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-gray-800 dark:active:bg-gray-700"
-              >
-                Prompt to Image
-              </Link>
-              {/* <Link
-                href="/image2prompt"
-                className="flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm dark:text-gray-200 transition-all duration-75 hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-gray-800 dark:active:bg-gray-700"
-              >
-                Image to Prompt
-              </Link> */}
-              <Link
-                href="/restore"
-                className="flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm dark:text-gray-200 transition-all duration-75 hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-gray-800 dark:active:bg-gray-700"
-              >
-                Restore Image
-              </Link>
-            </div>
-          }
-          openPopover={openPopover}
-          setOpenPopover={setOpenPopover}
-        >
-          <button
-            onClick={() => setOpenPopover(!openPopover)}
-            className="flex w-40 items-center justify-between rounded-md  px-4 py-2 transition-all duration-75 hover:border-gray-800 focus:outline-none active:bg-gray-100 dark:hover:bg-gray-800 dark:active:bg-gray-700"
-          >
-            <p className="text-gray-600 dark:text-gray-200 pl-8">AI Image</p>
-            <ChevronDown
-              className={`h-4 w-4 text-gray-600 dark:text-gray-200 transition-all ${
-                openPopover ? "rotate-180" : ""
-              }`}
-            />
-          </button>
-        </Popover>
-      </div>
-      <button
-        aria-label="Toggle Dark Mode"
-        type="button"
-        className="w-9 h-9 rounded-lg  flex items-center justify-center  hover:ring-2 ring-gray-300  transition-all"
-        onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+    <>
+      <header
+        className={`header px-2 top-0 left-0 z-40 flex w-full items-center bg-transparent ${
+          sticky
+            ? "!fixed !z-[9999] !bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm !transition dark:!bg-primary dark:!bg-opacity-20"
+            : "absolute"
+        }`}
       >
-        {mounted && (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            className="w-5 h-5 text-gray-800 dark:text-gray-200"
-          >
-            {resolvedTheme === "dark" ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-              />
-            )}
-          </svg>
-        )}
-      </button>
-    </div>
+        <div className="mx-auto flex h-16 min-w-full items-center justify-around">
+          <div className="w-80 max-w-full px-4 xl:mr-12">
+            <Link href="/">
+              <h1 className="text-lg font-bold text-black dark:text-white">
+                An AI Startup
+              </h1>
+            </Link>
+          </div>
+
+          <div className="flex w-full items-center justify-between px-4">
+            <button
+              onClick={navbarToggleHandler}
+              id="navbarToggler"
+              aria-label="Mobile Menu"
+              className="absolute right-6 top-1/2 block translate-y-[-50%] rounded-lg mr-6 px-2 py-[6px]  hover:ring-2 ring-gray-300 lg:hidden"
+            >
+              {!navbarOpen ? (
+                <Menu className="dark:text-white" />
+              ) : (
+                <X className="dark:text-white" />
+              )}
+            </button>
+            <nav
+              id="navbarCollapse"
+              className={`navbar absolute right-0 z-30 w-[250px] rounded border-[.5px] border-body-color/50 bg-white py-4 px-6 duration-300 dark:border-body-color/20 dark:bg-black lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 lg:opacity-100 ${
+                navbarOpen
+                  ? "visibility top-full opacity-100"
+                  : "invisible top-[120%] opacity-0"
+              }`}
+            >
+              <ul className="block lg:flex lg:space-x-12">
+                {menuData.map((menuItem, index) => (
+                  <li key={menuItem.id} className="group relative ">
+                    {menuItem.path ? (
+                      <Link
+                        href={menuItem.path}
+                        className={`flex py-2 text-base text-dark group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:py-6 lg:px-0`}
+                      >
+                        {menuItem.title}
+                      </Link>
+                    ) : (
+                      <>
+                        <a
+                          onClick={() => handleSubmenu(index)}
+                          className="flex cursor-pointer items-center justify-between py-2 text-base text-dark group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:py-6 lg:px-0"
+                        >
+                          {menuItem.title}
+                          <span className="pl-3">
+                            <svg width="15" height="14" viewBox="0 0 15 14">
+                              <path
+                                d="M7.81602 9.97495C7.68477 9.97495 7.57539 9.9312 7.46602 9.8437L2.43477 4.89995C2.23789 4.70308 2.23789 4.39683 2.43477 4.19995C2.63164 4.00308 2.93789 4.00308 3.13477 4.19995L7.81602 8.77183L12.4973 4.1562C12.6941 3.95933 13.0004 3.95933 13.1973 4.1562C13.3941 4.35308 13.3941 4.65933 13.1973 4.8562L8.16601 9.79995C8.05664 9.90933 7.94727 9.97495 7.81602 9.97495Z"
+                                fill="currentColor"
+                              />
+                            </svg>
+                          </span>
+                        </a>
+                        <div
+                          className={`submenu relative top-full left-0 rounded-md bg-white transition-[top] duration-300 group-hover:opacity-100 dark:bg-black lg:invisible lg:absolute lg:top-[110%] lg:block lg:w-[250px] lg:p-4 lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full ${
+                            openIndex === index ? "block" : "hidden"
+                          }`}
+                        >
+                          {menuItem?.submenu?.map((submenuItem) => (
+                            <>
+                              {submenuItem.path && (
+                                <Link
+                                  href={submenuItem.path}
+                                  key={submenuItem.id}
+                                  className="block rounded py-2.5 text-sm text-dark hover:opacity-70 dark:text-white lg:px-3"
+                                >
+                                  {submenuItem.title}
+                                </Link>
+                              )}
+                            </>
+                          ))}
+                        </div>
+                      </>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+
+          <ThemeToggler />
+        </div>
+      </header>
+    </>
   );
 }
