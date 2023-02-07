@@ -1,62 +1,50 @@
-import React, { useState } from "react";
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import { isConstructorDeclaration, JSDocNullableType } from "typescript";
 import Layout from "../components/layout";
-
-interface Prediction {
-  id: string;
-  status: string;
-  output: string[];
-}
+import Link from "next/link";
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 export default function Home() {
-  const [prediction, setPrediction] = useState<Prediction | null>(null);
-  const [error, setError] = useState(null);
-
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    const response = await fetch("/api/predictions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        prompt: e.target.prompt.value,
-      }),
-    });
-    let prediction = await response.json();
-    if (response.status !== 201) {
-      setError(prediction.detail);
-      return;
-    }
-    setPrediction(prediction);
-
-    while (
-      prediction.status !== "succeeded" &&
-      prediction.status !== "failed"
-    ) {
-      await sleep(1000);
-      const response = await fetch("/api/predictions/" + prediction.id);
-      prediction = await response.json();
-      if (response.status !== 200) {
-        setError(prediction.detail);
-        return;
-      }
-      console.log({ prediction });
-      setPrediction(prediction);
-    }
-  };
-
   return (
     <Layout>
-      <div className="flex flex-col">
-        <h1 className="mt-8 bg-gradient-to-br from-black via-slate-500 to-slate-400 dark:from-white dark:via-[#f5eaef] dark:to-[#5f4a54] bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl">
-          A little AI Project that you can use!
-        </h1>
+      <div className="container">
+        <div
+          className="flex felx-wrap flex-col justify-center items-center w-full px-4 fadeInUp mx-auto max-w-[900px] text-center"
+          data-wow-delay=".2s"
+        >
+          <h1 className="mb-5 text-3xl font-bold leading-tight bg-gradient-to-br from-black via-slate-500 to-slate-400 dark:from-white dark:via-[#f5eaef] dark:to-[#5f4a54] bg-clip-text text-transparent sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
+            An AI Startup?
+          </h1>
+          <h1 className="mb-5 text-3xl font-bold leading-tight bg-gradient-to-br from-black via-slate-500 to-slate-400 dark:from-white dark:via-[#f5eaef] dark:to-[#5f4a54] bg-clip-text text-transparent sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
+            Nah, I just use API call to GPT-3.
+          </h1>
+          {/* <Image
+            src="/images/we_are_an_ai_startup.jpeg"
+            alt="Next.js Startup Template"
+            width={300}
+            height={450}
+            className="rounded-2xl mb-5"
+          /> */}
+
+          <p className="mb-5 text-base font-medium !leading-relaxed text-body-color dark:text-white dark:opacity-90 sm:text-lg md:text-xl">
+            I am building this open source AI Startup websites to experiment the
+            GPT-3 and stable diffusion. Follow along as we figure out together
+            how to build a real AI startup.
+          </p>
+          <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+            <Link
+              href="https://nextjstemplates.com/templates/startup"
+              className="rounded-md bg-primary py-4 px-8 text-base font-semibold text-white dark:text-black bg-black dark:bg-white duration-300 ease-in-out hover:bg-primary/80"
+            >
+              Get Started
+            </Link>
+            <Link
+              href="https://github.com/NextJSTemplates/startup-nextjs"
+              className="rounded-md bg-black/20 py-4 px-8 text-base font-semibold text-black duration-300 ease-in-out hover:bg-black/30 dark:bg-white/20 dark:text-white dark:hover:bg-white/30"
+            >
+              Star on GitHub
+            </Link>
+          </div>
+        </div>
       </div>
     </Layout>
   );
