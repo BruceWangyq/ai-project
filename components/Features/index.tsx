@@ -5,8 +5,8 @@ import featuresData from "./featuresData";
 const Featrues = () => {
   return (
     <div>
-      <section className="container grid justify-center items-center  gap-6 py-8 md:py-12 lg:py-24">
-        <div className="mx-auto flex flex-col gap-4 md:max-w-[52rem] justify-center items-center">
+      <section className="container flex flex-col justify-center items-center  gap-6 py-8 md:py-12 lg:py-24">
+        <div className="mx-auto flex flex-col gap-4 justify-center items-center">
           <h2 className="text-3xl dark:text-white font-bold leading-[1.1] tracking-tighter sm:text-3xl md:text-6xl">
             Features
           </h2>
@@ -16,7 +16,7 @@ const Featrues = () => {
             Next.js 13 app dir.
           </p>
         </div>
-        <div className="grid justify-center gap-4 sm:grid-cols-2 md:max-w-[56rem] md:grid-cols-3">
+        <div className="grid justify-center gap-4 max-w-[85%] sm:grid-cols-2 md:grid-cols-3">
           {featuresData.map((feature) => (
             <FeatureCard key={feature.id} feature={feature} />
           ))}
