@@ -1,27 +1,27 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const Hero = () => {
   return (
     <div>
-      <div
-        className="flex felx-wrap flex-col justify-center items-center w-full px-4 fadeInUp mx-auto max-w-[900px] text-center"
+      <section
+        className="container grid justify-center gap-6 py-8 md:py-12 lg:py-36 felx-wrap flex-col items-center w-full px-4 fadeInUp mx-auto max-w-[900px] text-center"
         data-wow-delay=".2s"
       >
-        <h1 className="mb-5 text-3xl font-extrabold leading-tight bg-gradient-to-br from-black via-slate-500 to-slate-400 dark:from-white dark:via-[#f5eaef] dark:to-[#5f4a54] bg-clip-text text-transparent sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
+        <h1 className="mb-5 text-3xl font-extrabold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
           An AI Startup?
         </h1>
-        <h1 className="mb-5 text-3xl font-extrabold leading-tight bg-gradient-to-br from-black via-slate-500 to-slate-400 dark:from-white dark:via-[#f5eaef] dark:to-[#5f4a54] bg-clip-text text-transparent sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
+        <h1 className="mb-5 text-3xl font-extrabold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
           Nah, I just use API call to GPT-3.
         </h1>
         {/* <Image
-            src="/images/we_are_an_ai_startup.jpeg"
-            alt="Next.js Startup Template"
-            width={300}
-            height={450}
-            className="rounded-2xl mb-5"
-          /> */}
-
+          src="/images/we_are_an_ai_startup.jpeg"
+          alt="Next.js Startup Template"
+          width={300}
+          height={450}
+          className="rounded-2xl mb-5"
+        /> */}
         <p className="mb-5 text-base font-medium !leading-relaxed text-black/50 dark:text-white/50 dark:opacity-90 sm:text-lg md:text-xl">
           I am building this open source AI Startup websites to experiment the
           GPT-3 and stable diffusion. Follow along as we figure out together how
@@ -41,7 +41,7 @@ const Hero = () => {
             Star on GitHub
           </Link>
         </div>
-      </div>
+      </section>
     </div>
   );
 };
