@@ -16,16 +16,18 @@ const FeatureCard = ({ feature }: FeatureCardProps) => {
   const { img, title, paragraph, link } = feature;
   return (
     <Link href={link}>
-      <div className="relative overflow-hidden rounded-lg border-4 border-black dark:border-white  p-2 shadow-2xl">
-        <div className="flex h-[280px] flex-col justify-between items-center rounded-md bg-white dark:bg-black p-6 text-slate-200">
-          <Image
-            src={img}
-            alt="feature image"
-            className="rounded-md"
-            width={100}
-            height={100}
-          />
-          <div className="space-y-2">
+      <div className="relative overflow-hidden rounded-lg border-4 border-black dark:border-white  p-2 shadow-2xl mx-16 sm:mx-2 sm:h-[250px] max-h-[400px]">
+        <div className="flex  flex-col justify-between items-center rounded-md bg-transparent p-6 text-slate-200">
+          <div className="flex justify-center items-center w-full h-20">
+            <Image
+              src={img}
+              alt="feature image"
+              className="rounded-lg max-h-20"
+              width={110}
+              height={100}
+            />
+          </div>
+          <div className="space-y-2 text-center">
             <h3 className="font-bold text-base text-slate-800 dark:text-slate-200">
               {title}
             </h3>

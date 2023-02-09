@@ -12,8 +12,22 @@ const featuresData: FeaturesData[] = [
     img: "/images/prompt2image.jpg",
     title: "Prompt Generate Images",
     paragraph:
-      "Generate images from your prompt and share them with your friends.",
+      "Generate images from your prompt using stable diffusion models.",
     link: "/prompt2image",
+  },
+  {
+    id: 2,
+    img: "/images/image_restore.jpeg",
+    title: "Restore Old Images",
+    paragraph: "Restore old images using Replicate API",
+    link: "/restore",
+  },
+  {
+    id: 3,
+    img: "/images/grammar_correction.jpg",
+    title: "Correct Grammar Mistakes",
+    paragraph: "Correct grammar mistakes in your text using GPT-3",
+    link: "/grammar",
   },
 ];
 
