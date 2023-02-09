@@ -26,6 +26,7 @@ const Featrues = () => {
             More features coming soon!
           </p>
         </div>
+        <hr className="border-slate-200" />
       </section>
     </div>
   );

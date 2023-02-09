@@ -42,6 +42,7 @@ const Hero = () => {
           </Link>
         </div>
       </section>
+      <hr className="border-slate-200" />
     </div>
   );
 };
