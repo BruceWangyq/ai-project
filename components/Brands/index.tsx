@@ -19,7 +19,6 @@ const Brands = () => {
           </div>
         </div>
       </div>
-      <hr className="border-slate-200" />
     </section>
   );
 };

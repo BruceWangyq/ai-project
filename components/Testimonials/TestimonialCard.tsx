@@ -31,7 +31,7 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
   return (
     <div className="w-full">
       <div
-        className="wow fadeInUp rounded-md bg-transparent p-8 shadow-one lg:px-5 xl:px-8 border-4 border-black dark:border-white"
+        className="wow fadeInUp rounded-2xl bg-transparent p-8 shadow-one lg:px-5 xl:px-8 border-4 border-black dark:border-white"
         data-wow-delay=".1s"
       >
         <div className="mb-5 flex items-center space-x-1">{ratingIcons}</div>

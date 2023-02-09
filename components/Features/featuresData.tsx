@@ -10,7 +10,7 @@ const featuresData: FeaturesData[] = [
   {
     id: 1,
     img: "/images/prompt2image.jpg",
-    title: "Prompt Generate Images",
+    title: "Make pictures with words",
     paragraph:
       "Generate images from your prompt using stable diffusion models.",
     link: "/prompt2image",

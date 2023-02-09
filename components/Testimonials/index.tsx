@@ -9,7 +9,7 @@ const Testimonials = () => {
       <div className="container">
         <SectionTitle
           title="What Our Users Says"
-          paragraph="There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form."
+          paragraph="See what our users are saying about our product."
           center
         />
 
@@ -19,7 +19,7 @@ const Testimonials = () => {
           ))}
         </div>
       </div>
-      <hr className="border-slate-200" />
+      <hr className="border-slate-200 mt-20" />
     </section>
   );
 };
