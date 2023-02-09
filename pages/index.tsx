@@ -2,6 +2,7 @@ import Layout from "../components/layout";
 import Hero from "../components/Hero";
 import Featrues from "../components/Features";
 import Brands from "../components/Brands";
+import Testimonials from "../components/Testimonials";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <Hero />
       <Featrues />
       <Brands />
+      <Testimonials />
     </Layout>
   );
 }
