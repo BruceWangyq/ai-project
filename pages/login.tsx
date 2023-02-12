@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { UserAuthForm } from "@/components/dashboard/user-auth-form";
+import { UserAuthForm } from "@/components/user-auth-form";
 import { ChevronLeft, Command } from "lucide-react";
 
 export default function LoginPage() {
