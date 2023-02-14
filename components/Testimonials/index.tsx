@@ -1,5 +1,5 @@
 import React from "react";
-import SectionTitle from "../Common/SectionTitle";
+import SectionTitle from "../common/SectionTitle";
 import TestimonialCard from "./TestimonialCard";
 import { testimonialData } from "./testimonialData";
 

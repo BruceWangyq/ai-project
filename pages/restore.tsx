@@ -1,19 +1,18 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { NextPage } from "next";
-import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import { UploadDropzone } from "react-uploader";
 import { uploader, options } from "../utils/uploader";
 import { CompareSlider } from "@/components/CompareSlider";
 
-import LoadingDots from "../components/Common/LoadingDots";
+import LoadingDots from "../components/common/LoadingDots";
 
-import Toggle from "@/components/Common/Toggle";
+import Toggle from "@/components/common/Toggle";
 import appendNewToName from "@/utils/appendNewToName";
 import downloadPhoto from "@/utils/downloadPhoto";
 import Layout from "@/components/layout";
-import ResizablePanel from "@/components/Common/ResizablePanel";
+import ResizablePanel from "@/components/common/ResizablePanel";
 
 const Home: NextPage = () => {
   const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);

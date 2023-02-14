@@ -1,9 +1,9 @@
 import Layout from "@/components/layout";
-import Hero from "@/components/Hero";
-import Featrues from "@/components/Features";
-import Brands from "@/components/Brands";
-import Testimonials from "@/components/Testimonials";
-import Pricing from "@/components/Pricing";
+import Hero from "@/components/hero";
+import Featrues from "@/components/features";
+import Brands from "@/components/brands";
+import Testimonials from "@/components/testimonials";
+import Pricing from "@/components/pricing";
 
 export default function Home() {
   return (

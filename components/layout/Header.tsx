@@ -5,6 +5,13 @@ import { Menu, X } from "lucide-react";
 
 import { useState } from "react";
 import ThemeToggler from "../ThemeToggler";
+import { AnimatePresence } from "framer-motion";
+
+import { useSession } from "next-auth/react";
+import { useSignInModal } from "./sign-in-modal";
+import { motion } from "framer-motion";
+import UserDropdown from "./UserDropdown";
+import { FADE_IN_ANIMATION_SETTINGS } from "@/utils/motion";
 
 export default function Header() {
   // Navbar toggle
@@ -36,8 +43,13 @@ export default function Header() {
     window.addEventListener("scroll", handleStickyNavbar);
   });
 
+  // Sign In Modal
+  const { data: session, status } = useSession();
+  const { SignInModal, setShowSignInModal } = useSignInModal();
+
   return (
     <>
+      <SignInModal />
       <header
         className={`header px-2 top-0 left-0 z-40 flex w-full items-center bg-transparent ${
           sticky
@@ -128,7 +140,22 @@ export default function Header() {
             </nav>
           </div>
 
-          <ThemeToggler />
+          <div className="flex">
+            <AnimatePresence>
+              {!session && status !== "loading" ? (
+                <motion.button
+                  className="rounded-full border border-black bg-black p-1.5 px-4 mx-4 text-sm text-white transition-all hover:bg-white hover:text-black"
+                  onClick={() => setShowSignInModal(true)}
+                  {...FADE_IN_ANIMATION_SETTINGS}
+                >
+                  Sign In
+                </motion.button>
+              ) : (
+                <UserDropdown />
+              )}
+            </AnimatePresence>
+            <ThemeToggler />
+          </div>
         </div>
       </header>
     </>
