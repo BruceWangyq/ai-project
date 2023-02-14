@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { NextPage } from "next";
-import Layout from "../components/layout";
+import Layout from "@/components/layout";
 
 interface Prediction {
   id: string;

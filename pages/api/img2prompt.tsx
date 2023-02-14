@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import requestIp from "request-ip";
-import redis from "../../utils/redis";
+import redis from "@/utils/redis";
 import { Ratelimit } from "@upstash/ratelimit";
 
 type Data = string;

@@ -1,10 +1,9 @@
 import { NextPage } from "next";
-import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import { UploadDropzone } from "react-uploader";
-import Layout from "../components/layout";
-import { options, uploader } from "../utils/uploader";
+import Layout from "@/components/layout";
+import { options, uploader } from "@/utils/uploader";
 
 const Home: NextPage = () => {
   const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);

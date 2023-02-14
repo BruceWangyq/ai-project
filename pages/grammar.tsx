@@ -2,10 +2,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import type { NextPage } from "next";
 import { useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
-import Layout from "../components/layout";
+import Layout from "@/components/layout";
 
-import LoadingDots from "../components/Common/LoadingDots";
-import ResizablePanel from "../components/Common/ResizablePanel";
+import LoadingDots from "@/components/Common/LoadingDots";
+import ResizablePanel from "@/components/Common/ResizablePanel";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
