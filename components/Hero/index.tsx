@@ -21,8 +21,8 @@ const Hero = () => {
         </p>
         <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
           <Link
-            href="https://an-ai-startup.vercel.app/prompt2image"
-            className="rounded-md bg-primary py-4 px-8 text-base font-semibold text-white dark:text-black bg-black dark:bg-white duration-300 ease-in-out hover:bg-primary/80"
+            href="/prompt2image"
+            className="rounded-md bg-primary py-4 px-8 text-base font-semibold text-white dark:text-black bg-black dark:bg-white duration-300 ease-in-out hover:bg-black/80 dark:hover:bg-white/80"
           >
             Get Started
           </Link>
