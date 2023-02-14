@@ -8,7 +8,6 @@ import {
   useMemo,
 } from "react";
 import { Google } from "@/components/common/Icons";
-import Image from "next/image";
 import LoadingDots from "../common/LoadingDots";
 import Link from "next/link";
 
