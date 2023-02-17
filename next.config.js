@@ -15,6 +15,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "upcdn.io",
       },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+      },
     ],
   },
 };
