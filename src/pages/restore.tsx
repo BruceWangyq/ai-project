@@ -6,7 +6,7 @@ import { UploadDropzone } from "react-uploader";
 import { uploader, options } from "../utils/uploader";
 import { CompareSlider } from "@/components/CompareSlider";
 
-import LoadingDots from "../components/common/LoadingDots";
+import LoadingDots from "@/components/common/LoadingDots";
 
 import Toggle from "@/components/common/Toggle";
 import appendNewToName from "@/utils/appendNewToName";
