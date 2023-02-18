@@ -10,7 +10,7 @@ export default function App({
   pageProps: { session, ...pageProps },
 }: AppProps<{ session: Session }>) {
   return (
-    <SessionProvider session={session} refetchInterval={60 * 60} /* 1 hour */>
+    <SessionProvider session={session}>
       <ThemeProvider attribute="class" disableTransitionOnChange>
         <Component {...pageProps} />
         <Analytics />

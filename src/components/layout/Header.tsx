@@ -71,7 +71,7 @@ export default function Header() {
               onClick={navbarToggleHandler}
               id="navbarToggler"
               aria-label="Mobile Menu"
-              className="absolute right-6 top-1/2 block translate-y-[-50%] rounded-lg mr-6 px-2 py-[6px]  hover:ring-2 ring-gray-300 lg:hidden"
+              className="absolute top-1/2 block translate-y-[-50%] rounded-lg mr-6 px-2 py-[6px]  hover:ring-2 ring-gray-300 lg:hidden"
             >
               {!navbarOpen ? (
                 <Menu className="dark:text-white" />
@@ -81,7 +81,7 @@ export default function Header() {
             </button>
             <nav
               id="navbarCollapse"
-              className={`navbar absolute right-0 z-30 w-[250px] rounded border-[.5px] border-body-color/50 bg-white py-4 px-6 duration-300 dark:border-body-color/20 dark:bg-black lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 lg:opacity-100 ${
+              className={`navbar flex right-0 z-30 w-[250px] rounded border-[.5px] border-body-color/50 bg-white py-4 px-6 duration-300 dark:border-body-color/20 dark:bg-black lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 lg:opacity-100 ${
                 navbarOpen
                   ? "visibility top-full opacity-100"
                   : "invisible top-[120%] opacity-0"
@@ -140,11 +140,11 @@ export default function Header() {
             </nav>
           </div>
 
-          <div className="flex">
+          <div className="flex justify-center items-center">
             <AnimatePresence>
               {!session && status !== "loading" ? (
                 <motion.button
-                  className="rounded-full border border-black bg-black p-1.5 px-4 mx-4 text-sm text-white transition-all hover:bg-white hover:text-black"
+                  className="w-32 rounded-full border border-black bg-black dark:bg-white p-1.5 px-4 mx-6 text-sm text-white dark:text-black transition-all hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white dark:hover:border-white"
                   onClick={() => setShowSignInModal(true)}
                   {...FADE_IN_ANIMATION_SETTINGS}
                 >
