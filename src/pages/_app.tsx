@@ -4,6 +4,7 @@ import { ThemeProvider } from "next-themes";
 import { Analytics } from "@vercel/analytics/react";
 import { SessionProvider } from "next-auth/react";
 import type { Session } from "next-auth";
+import { Toaster } from "react-hot-toast";
 
 export default function App({
   Component,
@@ -14,6 +15,7 @@ export default function App({
       <ThemeProvider attribute="class" disableTransitionOnChange>
         <Component {...pageProps} />
         <Analytics />
+        <Toaster />
       </ThemeProvider>
     </SessionProvider>
   );
