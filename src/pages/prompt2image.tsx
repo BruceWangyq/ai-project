@@ -2,23 +2,19 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { NextPage } from "next";
 import Layout from "@/components/layout";
-
-interface Prediction {
-  id: string;
-  status: string;
-  output: string[];
-}
-
-const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+import LoadingDots from "@/components/common/LoadingDots";
 
 const Home: NextPage = () => {
-  const [prediction, setPrediction] = useState<Prediction | null>(null);
+  const [prediction, setPrediction] = useState<string | null>(null);
   const [error, setError] = useState(null);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const response = await fetch("/api/predictions", {
+    await new Promise((resolve) => setTimeout(resolve, 200));
+    setLoading(true);
+    const res = await fetch("/api/predictions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -27,27 +23,15 @@ const Home: NextPage = () => {
         prompt: input,
       }),
     });
-    let prediction = await response.json();
-    if (response.status !== 201) {
-      setError(prediction.detail);
-      return;
-    }
-    setPrediction(prediction);
 
-    while (
-      prediction.status !== "succeeded" &&
-      prediction.status !== "failed"
-    ) {
-      await sleep(1000);
-      const response = await fetch("/api/predictions/" + prediction.id);
-      prediction = await response.json();
-      if (response.status !== 200) {
-        setError(prediction.detail);
-        return;
-      }
-      console.log({ prediction });
+    let prediction = await res.json();
+    if (res.status !== 200) {
+      setError(prediction);
+    } else {
       setPrediction(prediction);
+      console.log("predictionImage", prediction);
     }
+    setLoading(false);
   };
 
   return (
@@ -72,29 +56,48 @@ const Home: NextPage = () => {
             lighting, detailed"
             className="w-full p-2 border-2 border-gray-300 rounded-md text-lg mr-4 shadow-sm focus:border-black focus:ring-black"
           />
-          <button
-            type="submit"
-            className="p-4 border-none rounded-md box-border cursor-pointer text-lg bg-gray-300 hover:bg-gray-400"
-          >
-            Go!
-          </button>
+          {loading ? (
+            <button
+              disabled
+              type="submit"
+              className="p-4 border-none rounded-md box-border cursor-pointer text-lg bg-gray-300 hover:bg-gray-400"
+            >
+              <span className="pt-4">
+                <LoadingDots color="white" style="large" />
+              </span>
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className="p-4 border-none rounded-md box-border cursor-pointer text-lg bg-gray-300 hover:bg-gray-400"
+            >
+              Go!
+            </button>
+          )}
         </form>
 
-        {error && <div>{error}</div>}
+        {error && (
+          <div
+            className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl mt-8"
+            role="alert"
+          >
+            <span className="block sm:inline">{error}</span>
+          </div>
+        )}
 
         {prediction && (
-          <div>
-            {prediction.output && (
-              <div className="w-full aspect-square relative">
-                <Image
-                  fill
-                  src={prediction.output[prediction.output.length - 1]}
-                  alt="output"
-                  sizes="100vw"
-                />
-              </div>
-            )}
-            <p>status: {prediction.status}</p>
+          <div
+            className="flex flex-col items-center sm:font-medium text-lg
+           "
+          >
+            <h2 className="mb-1 font-medium text-lg">Predicted Photo</h2>
+            <Image
+              alt="predicted photo"
+              src={prediction[0]}
+              className="rounded-2xl relative"
+              width={475}
+              height={475}
+            />
           </div>
         )}
       </div>
