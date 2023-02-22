@@ -51,7 +51,7 @@ export default function Header() {
     <>
       <SignInModal />
       <header
-        className={`header px-2 top-0 left-0 z-40 flex w-full items-center bg-transparent ${
+        className={`header px-2 top-0 left-0 z-40 flex w-full justify-center items-center bg-transparent ${
           sticky
             ? "!fixed !z-[9999] !bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm !transition dark:!bg-primary dark:!bg-opacity-20"
             : "absolute"
