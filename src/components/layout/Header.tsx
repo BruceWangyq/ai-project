@@ -58,7 +58,7 @@ export default function Header() {
         }`}
       >
         <div className="container relative -mx-4 h-20 flex w-full items-center justify-between">
-          <div className="w-full px-12 lg:ml-16 xl:mr-12">
+          <div className="w-full px-2 lg:ml-16 xl:mr-12">
             <Link href="/">
               <h1 className="text-lg font-bold text-black dark:text-white">
                 An AI Startup

@@ -73,7 +73,7 @@ const Home: NextPage = () => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             rows={4}
-            className="w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black my-5 p-2 bg-white"
+            className="w-full h-24 rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black my-5 mx-auto bg-white"
             placeholder={
               "e.g. This is a sentence have a lot of grammar mistake."
             }
