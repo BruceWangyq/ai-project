@@ -49,8 +49,8 @@ export default async function handler(
     },
     body: JSON.stringify({
       version:
-        "9283608cc6b7be6b65a8e44983db012355fde4132009bf99d976b2f0896856a3",
-      input: { img: imageUrl, version: "v1.4", scale: 2 },
+        "9222a21c181b707209ef12b5e0d7e94c994b58f01c7b2fec075d2e892362f13c",
+      input: { image: imageUrl, target_age: "default" },
     }),
   });
 

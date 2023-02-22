@@ -17,10 +17,10 @@ const featuresData: FeaturesData[] = [
   },
   {
     id: 2,
-    img: "/images/image_restore.jpeg",
-    title: "Restore Old Images",
-    paragraph: "Restore old images using Replicate API",
-    link: "/restore",
+    img: "/images/age_transform.jpg",
+    title: "Age Progression",
+    paragraph: "See yourself in the future using Replicate API",
+    link: "/transform",
   },
   {
     id: 3,

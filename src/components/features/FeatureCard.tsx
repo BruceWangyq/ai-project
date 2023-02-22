@@ -16,7 +16,7 @@ const FeatureCard = ({ feature }: FeatureCardProps) => {
   const { img, title, paragraph, link } = feature;
   return (
     <Link href={link}>
-      <div className="relative overflow-hidden rounded-2xl border-4 border-black dark:border-white  p-2 shadow-2xl mx-16 sm:mx-2 sm:h-[250px] max-h-[400px]">
+      <div className="relative overflow-hidden rounded-2xl border-4 border-black dark:border-white hover:border-slate-500 dark:border-white/50 p-2 shadow-2xl mx-16 sm:mx-2 sm:h-[250px] max-h-[400px]">
         <div className="flex  flex-col justify-between items-center rounded-md bg-transparent p-6 text-slate-200">
           <div className="flex justify-center items-center w-full h-20">
             <Image

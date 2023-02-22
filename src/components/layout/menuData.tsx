@@ -28,8 +28,8 @@ const menuData: MenuDataProps[] = [
       },
       {
         id: 32,
-        title: "Image Restoration",
-        path: "/restore",
+        title: "Age Progression",
+        path: "/transform",
         newTab: false,
       },
     ],
