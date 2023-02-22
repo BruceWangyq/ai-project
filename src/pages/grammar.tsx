@@ -12,7 +12,7 @@ const Home: NextPage = () => {
   const [input, setInput] = useState("");
   const [generatedTexts, setGeneratedTexts] = useState<string>("");
 
-  const prompt = `Correct this to standard English: ${input}`;
+  const prompt = `Correct this to standard, professional English: ${input}`;
 
   const generate = async (e: any) => {
     e.preventDefault();

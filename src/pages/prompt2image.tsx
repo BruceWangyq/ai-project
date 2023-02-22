@@ -54,7 +54,7 @@ const Home: NextPage = () => {
             name="prompt"
             placeholder=" e.g. An astronaut riding a octopus on moon artstation, hd, dramatic
             lighting, detailed"
-            className="w-full p-2 border-2 border-gray-300 rounded-md text-lg mr-4 shadow-sm focus:border-black focus:ring-black"
+            className="w-full p-2 border-2 border-gray-300 rounded-md mr-4 shadow-sm focus:border-black focus:ring-black bg-white"
           />
           {loading ? (
             <button
