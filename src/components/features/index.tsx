@@ -2,7 +2,7 @@ import React from "react";
 import FeatureCard from "./FeatureCard";
 import featuresData from "./featuresData";
 
-const Featrues = () => {
+const Features = () => {
   return (
     <div>
       <section className="container flex flex-col justify-center items-center  gap-6 py-8 md:py-12 lg:py-24">
@@ -32,4 +32,4 @@ const Featrues = () => {
   );
 };
 
-export default Featrues;
+export default Features;
