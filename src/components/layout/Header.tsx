@@ -51,13 +51,13 @@ export default function Header() {
     <>
       <SignInModal />
       <header
-        className={`header px-2 top-0 left-0 z-40 flex w-full justify-center items-center bg-transparent ${
+        className={`header top-0 left-0 z-40 flex w-full items-center justify-center bg-transparent px-2 ${
           sticky
-            ? "!fixed !z-[9999] !bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm !transition dark:!bg-primary dark:!bg-opacity-20"
+            ? "shadow-sticky dark:!bg-primary !fixed !z-[9999] !bg-white !bg-opacity-80 backdrop-blur-sm !transition dark:!bg-opacity-20"
             : "absolute"
         }`}
       >
-        <div className="container relative -mx-4 h-20 flex w-full items-center justify-between">
+        <div className="container relative -mx-4 flex h-20 w-full items-center justify-between">
           <div className="w-full px-2 lg:ml-16 xl:mr-12">
             <Link href="/">
               <h1 className="text-lg font-bold text-black dark:text-white">
@@ -72,7 +72,7 @@ export default function Header() {
                 onClick={navbarToggleHandler}
                 id="navbarToggler"
                 aria-label="Mobile Menu"
-                className="absolute right-0 top-1/2 block translate-y-[-50%] rounded-lg  ml-6 px-2 py-[6px]  hover:ring-2 ring-gray-300 lg:hidden"
+                className="absolute right-0 top-1/2 ml-6 block translate-y-[-50%]  rounded-lg px-2 py-[6px]  ring-gray-300 hover:ring-2 lg:hidden"
               >
                 <span
                   className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
@@ -92,7 +92,7 @@ export default function Header() {
               </button>
               <nav
                 id="navbarCollapse"
-                className={`navbar absolute right-0 z-30 w-[250px] rounded border-[.5px] border-body-color/50 bg-white py-4 px-6 duration-300 dark:border-body-color/20 dark:bg-black lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 lg:opacity-100 ${
+                className={`navbar border-body-color/50 dark:border-body-color/20 absolute right-0 z-30 w-[250px] rounded border-[.5px] bg-white py-4 px-6 duration-300 dark:bg-black lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 lg:opacity-100 ${
                   navbarOpen
                     ? "visibility top-full opacity-100"
                     : "invisible top-[120%] opacity-0"
@@ -104,7 +104,7 @@ export default function Header() {
                       {menuItem.path ? (
                         <Link
                           href={menuItem.path}
-                          className={`flex py-2 text-base text-dark group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:py-6 lg:px-0`}
+                          className={`text-dark flex py-2 text-base group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:py-6 lg:px-0`}
                         >
                           {menuItem.title}
                         </Link>
@@ -112,7 +112,7 @@ export default function Header() {
                         <>
                           <a
                             onClick={() => handleSubmenu(index)}
-                            className="flex cursor-pointer items-center justify-between py-2 text-base text-dark group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:py-6 lg:px-0"
+                            className="text-dark flex cursor-pointer items-center justify-between py-2 text-base group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:py-6 lg:px-0"
                           >
                             {menuItem.title}
                             <span className="pl-3">
@@ -135,7 +135,7 @@ export default function Header() {
                                   <Link
                                     href={submenuItem.path}
                                     key={submenuItem.id}
-                                    className="block rounded py-2.5 text-sm text-dark hover:opacity-70 dark:text-white lg:px-3"
+                                    className="text-dark block rounded py-2.5 text-sm hover:opacity-70 dark:text-white lg:px-3"
                                   >
                                     {submenuItem.title}
                                   </Link>
@@ -151,11 +151,11 @@ export default function Header() {
               </nav>
             </div>
 
-            <div className="flex justify-end pr-16 lg:pr-0 items-center">
+            <div className="flex items-center justify-end pr-16 lg:pr-0">
               <AnimatePresence>
                 {!session && status !== "loading" ? (
                   <motion.button
-                    className="w-32 rounded-full border border-black bg-black dark:bg-white p-1.5 px-4 mx-6 text-sm text-white dark:text-black transition-all hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white dark:hover:border-white"
+                    className="mx-6 w-32 rounded-full border border-black bg-black p-1.5 px-4 text-sm text-white transition-all hover:bg-white hover:text-black dark:bg-white dark:text-black dark:hover:border-white dark:hover:bg-black dark:hover:text-white"
                     onClick={() => setShowSignInModal(true)}
                     {...FADE_IN_ANIMATION_SETTINGS}
                   >

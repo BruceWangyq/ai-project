@@ -1,10 +1,13 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
   darkMode: "class",
   theme: {},
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
+
+
+module.exports = config;
