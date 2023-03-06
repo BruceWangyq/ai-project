@@ -1,7 +1,7 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import redis from "@/utils/redis";
-import { Ratelimit } from "@upstash/ratelimit";
-import requestIp from "request-ip";
+import { NextApiRequest, NextApiResponse } from "next"
+import redis from "@/utils/redis"
+import { Ratelimit } from "@upstash/ratelimit"
+import requestIp from "request-ip"
 
 // Create a new ratelimiter, that allows 3 requests per 60 seconds
 const ratelimit = redis
@@ -9,7 +9,7 @@ const ratelimit = redis
       redis: redis,
       limiter: Ratelimit.fixedWindow(3, "60 s"),
     })
-  : undefined;
+  : undefined
 
 export default async function handler(
   req: NextApiRequest,
@@ -17,18 +17,18 @@ export default async function handler(
 ) {
   // Rate Limiter Code
   if (ratelimit) {
-    const identifier = requestIp.getClientIp(req);
-    const result = await ratelimit.limit(identifier!);
-    res.setHeader("X-RateLimit-Limit", result.limit);
-    res.setHeader("X-RateLimit-Remaining", result.remaining);
+    const identifier = requestIp.getClientIp(req)
+    const result = await ratelimit.limit(identifier!)
+    res.setHeader("X-RateLimit-Limit", result.limit)
+    res.setHeader("X-RateLimit-Remaining", result.remaining)
 
     if (!result.success) {
       res
         .status(429)
         .json(
           "Too many uploads in 1 minute. Please try again in a few minutes."
-        );
-      return;
+        )
+      return
     }
   }
 
@@ -50,12 +50,12 @@ export default async function handler(
         input: { prompt: req.body.prompt },
       }),
     }
-  );
+  )
 
-  let jsonStartResponse = await startResponse.json();
-  let endpointUrl = jsonStartResponse.urls.get;
+  let jsonStartResponse = await startResponse.json()
+  let endpointUrl = jsonStartResponse.urls.get
 
-  let predictedImage: string | null = null;
+  let predictedImage: string | null = null
   while (!predictedImage) {
     let finalResponse = await fetch(endpointUrl, {
       method: "GET",
@@ -63,18 +63,18 @@ export default async function handler(
         "Content-Type": "application/json",
         Authorization: `Token ${process.env.REPLICATE_API_KEY}`,
       },
-    });
-    let jsonFinalResponse = await finalResponse.json();
+    })
+    let jsonFinalResponse = await finalResponse.json()
 
     if (jsonFinalResponse.status === "succeeded") {
-      predictedImage = jsonFinalResponse.output;
+      predictedImage = jsonFinalResponse.output
     } else if (jsonFinalResponse.status === "failed") {
-      break;
+      break
     } else {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 1000))
     }
   }
   res
     .status(200)
-    .json(predictedImage ? predictedImage : "Failed to restore image");
+    .json(predictedImage ? predictedImage : "Failed to restore image")
 }

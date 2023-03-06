@@ -1,15 +1,15 @@
-import Head from "next/head";
+import Head from "next/head"
 
-const DOMAIN = "https://ai-project-three.vercel.app";
+const DOMAIN = "https://ai-project-three.vercel.app"
 
 export default function Meta({
   title = "An AI Startup",
   description = "This is an AI startup that you can use to generate image, fix grammar and restore image.",
   image = `${DOMAIN}/api/og`,
 }: {
-  title?: string;
-  description?: string;
-  image?: string;
+  title?: string
+  description?: string
+  image?: string
 }) {
   return (
     <Head>
@@ -33,5 +33,5 @@ export default function Meta({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
     </Head>
-  );
+  )
 }

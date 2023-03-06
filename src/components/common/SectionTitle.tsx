@@ -1,9 +1,9 @@
 interface SectionTitleProps {
-  title: string;
-  paragraph: string;
-  width?: string;
-  center?: boolean;
-  mb?: string;
+  title: string
+  paragraph: string
+  width?: string
+  center?: boolean
+  mb?: string
 }
 
 const SectionTitle = ({
@@ -28,7 +28,7 @@ const SectionTitle = ({
         </p>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default SectionTitle;
+export default SectionTitle

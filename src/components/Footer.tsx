@@ -1,15 +1,15 @@
-import Link from "next/link";
+import Link from "next/link"
 
 export default function Footer() {
   return (
-    <footer className="text-center h-16 sm:h-20 w-3/4 sm:pt-2 pt-4 border-t-2 border-gray-400 dark:border-stone-700 mt-5 flex sm:flex-row flex-col justify-between items-center px-16 space-y-3 sm:mb-0 mb-10">
+    <footer className="mt-5 mb-10 flex h-16 w-3/4 flex-col items-center justify-between space-y-3 border-t-2 border-gray-400 px-16 pt-4 text-center dark:border-stone-700 sm:mb-0 sm:h-20 sm:flex-row sm:pt-2">
       <div className="text-black dark:text-white">
         Powered by{" "}
         <Link
           href="https://replicate.com/"
           target="_blank"
           rel="noreferrer"
-          className="font-bold hover:underline transition underline-offset-2"
+          className="font-bold underline-offset-2 transition hover:underline"
         >
           Replicate
         </Link>
@@ -18,7 +18,7 @@ export default function Footer() {
           href="https://platform.openai.com"
           target="_blank"
           rel="noreferrer"
-          className="font-bold hover:underline transition underline-offset-2"
+          className="font-bold underline-offset-2 transition hover:underline"
         >
           OpenAI{" "}
         </Link>
@@ -27,12 +27,12 @@ export default function Footer() {
           href="https://vercel.com/"
           target="_blank"
           rel="noreferrer"
-          className="font-bold hover:underline transition underline-offset-2"
+          className="font-bold underline-offset-2 transition hover:underline"
         >
           Vercel.
         </Link>
       </div>
-      <div className="flex space-x-4 pb-4 px-8">
+      <div className="flex space-x-4 px-8 pb-4">
         <Link
           href="https://twitter.com/brucewangdev"
           target={"_blank"}
@@ -61,5 +61,5 @@ export default function Footer() {
         </Link>
       </div>
     </footer>
-  );
+  )
 }

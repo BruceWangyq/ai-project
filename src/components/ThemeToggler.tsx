@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
+import { useEffect, useState } from "react"
+import { useTheme } from "next-themes"
 
 export default function ThemeToggler() {
-  const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  const { resolvedTheme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
 
   return (
     <button
       aria-label="Toggle Dark Mode"
       type="button"
-      className="w-9 h-9 rounded-lg p-2 ml-2 flex items-center justify-center  hover:ring-2 ring-gray-300  transition-all"
+      className="ml-2 flex h-9 w-9 items-center justify-center rounded-lg p-2  ring-gray-300 transition-all  hover:ring-2"
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
     >
       {mounted && (
@@ -19,7 +19,7 @@ export default function ThemeToggler() {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          className="w-5 h-5 text-gray-800 dark:text-gray-200"
+          className="h-5 w-5 text-gray-800 dark:text-gray-200"
         >
           {resolvedTheme === "dark" ? (
             <path
@@ -39,5 +39,5 @@ export default function ThemeToggler() {
         </svg>
       )}
     </button>
-  );
+  )
 }

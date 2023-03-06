@@ -1,10 +1,10 @@
-import Link from "next/link";
+import Link from "next/link"
 
 const Hero = () => {
   return (
     <div>
       <section
-        className="container grid justify-center gap-6 py-8 md:py-12 lg:py-36 felx-wrap flex-col items-center w-full mt-24 px-4 fadeInUp mx-auto max-w-[900px] text-center"
+        className="felx-wrap fadeInUp container mx-auto mt-24 grid w-full max-w-[900px] flex-col items-center justify-center gap-6 py-8 px-4 text-center md:py-12 lg:py-36"
         data-wow-delay=".2s"
       >
         <h1 className="mb-5 text-3xl font-extrabold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
@@ -22,7 +22,7 @@ const Hero = () => {
         <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
           <Link
             href="/prompt2image"
-            className="rounded-md bg-primary py-4 px-8 text-base font-semibold text-white dark:text-black bg-black dark:bg-white duration-300 ease-in-out hover:bg-black/80 dark:hover:bg-white/80"
+            className="bg-primary rounded-md bg-black py-4 px-8 text-base font-semibold text-white duration-300 ease-in-out hover:bg-black/80 dark:bg-white dark:text-black dark:hover:bg-white/80"
           >
             Get Started
           </Link>
@@ -36,7 +36,7 @@ const Hero = () => {
       </section>
       <hr className="border-slate-200" />
     </div>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

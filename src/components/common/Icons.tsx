@@ -20,10 +20,10 @@ import {
   Twitter,
   User,
   X,
-} from "lucide-react";
-import type { Icon as LucideIcon } from "lucide-react";
+} from "lucide-react"
+import type { Icon as LucideIcon } from "lucide-react"
 
-export type Icon = LucideIcon;
+export type Icon = LucideIcon
 
 export const Icons = {
   logo: Command,
@@ -47,7 +47,7 @@ export const Icons = {
   gitHub: Github,
   twitter: Twitter,
   check: Check,
-};
+}
 
 export const Google = ({ className }: { className: string }) => {
   return (
@@ -94,5 +94,5 @@ export const Google = ({ className }: { className: string }) => {
         d="M50 69.8a19.8 19.8 90 1 0 0-39.6 19.8 19.8 90 0 0 0 39.6z"
       />{" "}
     </svg>
-  );
-};
+  )
+}

@@ -1,7 +1,7 @@
-import { Dispatch, SetStateAction, ReactNode, useRef } from "react";
-import * as PopoverPrimitive from "@radix-ui/react-popover";
-import useWindowSize from "@/hooks/use-window-size";
-import Leaflet from "./Leaflet";
+import { Dispatch, SetStateAction, ReactNode, useRef } from "react"
+import * as PopoverPrimitive from "@radix-ui/react-popover"
+import useWindowSize from "@/hooks/use-window-size"
+import Leaflet from "./Leaflet"
 
 export default function Popover({
   children,
@@ -10,13 +10,13 @@ export default function Popover({
   openPopover,
   setOpenPopover,
 }: {
-  children: ReactNode;
-  content: ReactNode | string;
-  align?: "center" | "start" | "end";
-  openPopover: boolean;
-  setOpenPopover: Dispatch<SetStateAction<boolean>>;
+  children: ReactNode
+  content: ReactNode | string
+  align?: "center" | "start" | "end"
+  openPopover: boolean
+  setOpenPopover: Dispatch<SetStateAction<boolean>>
 }) {
-  const { isMobile, isDesktop } = useWindowSize();
+  const { isMobile, isDesktop } = useWindowSize()
   return (
     <>
       {isMobile && children}
@@ -31,12 +31,12 @@ export default function Popover({
           <PopoverPrimitive.Content
             sideOffset={4}
             align={align}
-            className="z-20 animate-slide-up-fade items-center rounded-md border border-gray-200 bg-white drop-shadow-lg"
+            className="animate-slide-up-fade z-20 items-center rounded-md border border-gray-200 bg-white drop-shadow-lg"
           >
             {content}
           </PopoverPrimitive.Content>
         </PopoverPrimitive.Root>
       )}
     </>
-  );
+  )
 }

@@ -26,4 +26,4 @@ export const testimonialData = [
     image: "/images/testimonials/Sundar-Pichai.png",
     star: 4,
   },
-];
+]

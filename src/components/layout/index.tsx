@@ -1,28 +1,28 @@
-import Footer from "./Footer";
-import Header from "./Header";
-import Meta from "./meta";
+import Footer from "../Footer"
+import Header from "../Header"
+import Meta from "./meta"
 
 export default function Layout({
   meta,
   children,
 }: {
   meta?: {
-    title?: string;
-    description?: string;
-    image?: string;
-  };
-  children: React.ReactNode;
+    title?: string
+    description?: string
+    image?: string
+  }
+  children: React.ReactNode
 }) {
   return (
     <>
       <Meta {...meta} />
-      <div className="flex flex-col min-h-screen max-w-full justify-center items-center ">
+      <div className="flex min-h-screen max-w-full flex-col items-center justify-center ">
         <Header />
-        <main className="flex w-full flex-col items-center justify-center mx-auto my-auto">
+        <main className="mx-auto my-auto flex w-full flex-col items-center justify-center">
           {children}
         </main>
         <Footer />
       </div>
     </>
-  );
+  )
 }

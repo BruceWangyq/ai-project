@@ -1,17 +1,17 @@
-import { useState } from "react";
-import { signOut, useSession } from "next-auth/react";
-import { LayoutDashboard, LogOut } from "lucide-react";
-import Popover from "@/components/common/Popover";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { FADE_IN_ANIMATION_SETTINGS } from "@/utils/motion";
+import { useState } from "react"
+import { signOut, useSession } from "next-auth/react"
+import { LayoutDashboard, LogOut } from "lucide-react"
+import Popover from "@/components/common/Popover"
+import Image from "next/image"
+import { motion } from "framer-motion"
+import { FADE_IN_ANIMATION_SETTINGS } from "@/utils/motion"
 
 export default function UserDropdown() {
-  const { data: session } = useSession();
-  const { email, image } = session?.user || {};
-  const [openPopover, setOpenPopover] = useState(false);
+  const { data: session } = useSession()
+  const { email, image } = session?.user || {}
+  const [openPopover, setOpenPopover] = useState(false)
 
-  if (!email) return null;
+  if (!email) return null
 
   return (
     <motion.div
@@ -50,7 +50,7 @@ export default function UserDropdown() {
       >
         <button
           onClick={() => setOpenPopover(!openPopover)}
-          className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-gray-300 transition-all duration-75 focus:outline-none active:scale-95 sm:h-9 sm:w-9 mt-2"
+          className="mt-2 flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-gray-300 transition-all duration-75 focus:outline-none active:scale-95 sm:h-9 sm:w-9"
         >
           <Image
             alt={email}
@@ -61,5 +61,5 @@ export default function UserDropdown() {
         </button>
       </Popover>
     </motion.div>
-  );
+  )
 }

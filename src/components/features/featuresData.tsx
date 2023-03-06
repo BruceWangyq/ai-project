@@ -1,9 +1,9 @@
 interface FeaturesData {
-  id: number;
-  img: string;
-  title: string;
-  paragraph: string;
-  link: string;
+  id: number
+  img: string
+  title: string
+  paragraph: string
+  link: string
 }
 
 const featuresData: FeaturesData[] = [
@@ -29,6 +29,6 @@ const featuresData: FeaturesData[] = [
     paragraph: "Correct grammar mistakes in your text using GPT-3",
     link: "/grammar",
   },
-];
+]
 
-export default featuresData;
+export default featuresData

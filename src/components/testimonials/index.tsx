@@ -1,11 +1,11 @@
-import React from "react";
-import SectionTitle from "../common/SectionTitle";
-import TestimonialCard from "./TestimonialCard";
-import { testimonialData } from "./testimonialData";
+import React from "react"
+import SectionTitle from "../common/SectionTitle"
+import TestimonialCard from "./TestimonialCard"
+import { testimonialData } from "./testimonialData"
 
 const Testimonials = () => {
   return (
-    <section className="relative z-10 bg-primary/[.03] py-16 md:py-20 lg:py-28 mx-16">
+    <section className="bg-primary/[.03] relative z-10 mx-16 py-16 md:py-20 lg:py-28">
       <div className="container">
         <SectionTitle
           title="What Our Users Says"
@@ -13,15 +13,15 @@ const Testimonials = () => {
           center
         />
 
-        <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3 max-w-[85%] mx-auto">
+        <div className="mx-auto grid max-w-[85%] grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
           {testimonialData.map((testimonial) => (
             <TestimonialCard key={testimonial.id} testimonial={testimonial} />
           ))}
         </div>
       </div>
-      <hr className="border-slate-200 mt-20" />
+      <hr className="mt-20 border-slate-200" />
     </section>
-  );
-};
+  )
+}
 
-export default Testimonials;
+export default Testimonials

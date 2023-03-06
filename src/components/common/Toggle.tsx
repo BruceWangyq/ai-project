@@ -1,12 +1,12 @@
-import { Switch } from "@headlessui/react";
+import { Switch } from "@headlessui/react"
 
 function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(" ")
 }
 
 export interface ToggleProps extends React.HTMLAttributes<HTMLDivElement> {
-  sideBySide: boolean;
-  setSideBySide: (sideBySide: boolean) => void;
+  sideBySide: boolean
+  setSideBySide: (sideBySide: boolean) => void
 }
 
 export default function Toggle({
@@ -18,7 +18,7 @@ export default function Toggle({
     <Switch.Group as="div" {...props}>
       <div className="flex items-center">
         <span
-          className={`text-sm mr-3 font-medium ${
+          className={`mr-3 text-sm font-medium ${
             !sideBySide ? "text-gray-900" : "text-gray-500"
           }`}
         >
@@ -51,5 +51,5 @@ export default function Toggle({
         </Switch.Label>
       </div>
     </Switch.Group>
-  );
+  )
 }

@@ -1,18 +1,18 @@
 interface PricingBoxProps {
-  price: string;
-  duration: string;
-  packageName: string;
-  subtitle: string;
-  children: React.ReactNode;
+  price: string
+  duration: string
+  packageName: string
+  subtitle: string
+  children: React.ReactNode
 }
 
 const PricingBox = (props: PricingBoxProps) => {
-  const { price, duration, packageName, subtitle, children } = props;
+  const { price, duration, packageName, subtitle, children } = props
 
   return (
     <div className="w-full">
       <div
-        className="wow fadeInUp relative z-10 rounded-2xl bg-transparent px-8 mx-8 sm:mx-2 py-10 shadow-signUp border-2"
+        className="wow fadeInUp shadow-signUp relative z-10 mx-8 rounded-2xl border-2 bg-transparent px-8 py-10 sm:mx-2"
         data-wow-delay=".1s"
       >
         <div className="flex items-center justify-between">
@@ -25,15 +25,15 @@ const PricingBox = (props: PricingBoxProps) => {
           </h4>
         </div>
         <p className="mb-7 text-base text-black dark:text-white">{subtitle}</p>
-        <div className="mb-8 border-b border-body-color border-opacity-10 pb-8 dark:border-white dark:border-opacity-10">
-          <button className="flex w-full items-center justify-center rounded-md bg-black p-3 text-base font-semibold text-white dark:text-black dark:bg-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
+        <div className="border-body-color mb-8 border-b border-opacity-10 pb-8 dark:border-white dark:border-opacity-10">
+          <button className="hover:shadow-signUp flex w-full items-center justify-center rounded-md bg-black p-3 text-base font-semibold text-white transition duration-300 ease-in-out hover:bg-opacity-80 dark:bg-white dark:text-black">
             Start Free Trial
           </button>
         </div>
         <div>{children}</div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PricingBox;
+export default PricingBox

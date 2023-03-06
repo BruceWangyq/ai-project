@@ -17,4 +17,4 @@ export const brandsData = [
     href: "https://vercel.com",
     image: "/images/brands/vercel.svg",
   },
-];
+]

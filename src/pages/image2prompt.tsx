@@ -1,14 +1,14 @@
-import { NextPage } from "next";
-import Image from "next/image";
-import { useState } from "react";
-import { UploadDropzone } from "react-uploader";
-import Layout from "@/components/layout";
-import { options, uploader } from "@/utils/uploader";
+import { NextPage } from "next"
+import Image from "next/image"
+import { useState } from "react"
+import { UploadDropzone } from "react-uploader"
+import Layout from "@/components/layout"
+import { options, uploader } from "@/utils/uploader"
 
 const Home: NextPage = () => {
-  const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
-  const [prompt, setPrompt] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [originalPhoto, setOriginalPhoto] = useState<string | null>(null)
+  const [prompt, setPrompt] = useState<string | null>(null)
+  const [loading, setLoading] = useState<boolean>(false)
 
   const UploadDropZone = () => (
     <UploadDropzone
@@ -16,42 +16,42 @@ const Home: NextPage = () => {
       options={options}
       onUpdate={(file) => {
         if (file.length !== 0) {
-          console.log("file", file);
-          setOriginalPhoto(file[0].fileUrl.replace("raw", "thumbnail"));
-          console.log("originalPhoto", originalPhoto);
-          generatePrompt(file[0].fileUrl.replace("raw", "thumbnail"));
+          console.log("file", file)
+          setOriginalPhoto(file[0].fileUrl.replace("raw", "thumbnail"))
+          console.log("originalPhoto", originalPhoto)
+          generatePrompt(file[0].fileUrl.replace("raw", "thumbnail"))
         }
       }}
       width="670px"
       height="250px"
     />
-  );
+  )
 
   async function generatePrompt(fileUrl: string) {
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    setLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 500))
+    setLoading(true)
     const res = await fetch("/api/img2prompt", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ imageUrl: fileUrl }),
-    });
+    })
 
-    let newPrompt = await res.json();
-    console.log("newPrompt", newPrompt);
+    let newPrompt = await res.json()
+    console.log("newPrompt", newPrompt)
     if (res.status !== 200) {
-      console.log("error", newPrompt);
+      console.log("error", newPrompt)
     } else {
-      setPrompt(newPrompt);
-      console.log("prompt", prompt);
+      setPrompt(newPrompt)
+      console.log("prompt", prompt)
     }
-    setLoading(false);
+    setLoading(false)
   }
 
   return (
     <Layout>
-      <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-900 dark:text-slate-200 sm:text-6xl mb-5 text-center">
+      <h1 className="font-display mx-auto mb-5 max-w-4xl text-center text-4xl font-bold tracking-normal text-slate-900 dark:text-slate-200 sm:text-6xl">
         Turn your photo into a prompt
       </h1>
       {!originalPhoto && <UploadDropZone />}
@@ -60,14 +60,14 @@ const Home: NextPage = () => {
           <Image
             src={originalPhoto}
             alt="originalPhoto"
-            className="rounded-2xl relative"
+            className="relative rounded-2xl"
             width={475}
             height={475}
           />
           <button
-            className="bordered-full bg-black text-white font-medium px-4 pt-2 pb-3 mt-8 hover:bg-black/80 w-40"
+            className="bordered-full mt-8 w-40 bg-black px-4 pt-2 pb-3 font-medium text-white hover:bg-black/80"
             onClick={() => {
-              setOriginalPhoto(null), setPrompt(null);
+              setOriginalPhoto(null), setPrompt(null)
             }}
           >
             Upload new photo
@@ -80,7 +80,7 @@ const Home: NextPage = () => {
         </div>
       )}
     </Layout>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
