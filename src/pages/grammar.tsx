@@ -58,13 +58,13 @@ const Home: NextPage = () => {
 
   return (
     <Layout>
-      <div className="flex flex-col justify-center items-center">
-        <h1 className="sm:text-6xl text-4xl max-w-2xl font-bold text-slate-900 dark:text-slate-100 text-center">
+      <div className="flex flex-col items-center justify-center">
+        <h1 className="max-w-2xl text-center text-4xl font-bold text-slate-900 dark:text-slate-100 sm:text-6xl">
           Correct your grammar in seconds
         </h1>
 
-        <div className="max-w-xl w-full">
-          <div className="flex mt-10 items-center space-x-3 justify-center">
+        <div className="w-full max-w-xl">
+          <div className="mt-10 flex items-center justify-center space-x-3">
             <p className="text-left  font-medium text-slate-900 dark:text-slate-100">
               Input your text below and we&apos;ll correct it for you.
             </p>
@@ -73,7 +73,7 @@ const Home: NextPage = () => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             rows={4}
-            className="w-full h-24 rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black my-5 mx-auto bg-white"
+            className="my-5 mx-auto h-24 w-full rounded-md border-gray-300 bg-white shadow-sm focus:border-black focus:ring-black"
             placeholder={
               "e.g. This is a sentence have a lot of grammar mistake."
             }
@@ -82,7 +82,7 @@ const Home: NextPage = () => {
           {!loading && (
             <div className="flex justify-center">
               <button
-                className="bg-black rounded-xl text-white dark:bg-white dark:text-black font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80 w-1/3 mx-2"
+                className="mx-2 mt-8 w-1/3 rounded-xl bg-black px-4 py-2 font-medium text-white hover:bg-black/80 dark:bg-white dark:text-black sm:mt-10"
                 onClick={(e) => generate(e)}
               >
                 Correct Grammar
@@ -91,7 +91,7 @@ const Home: NextPage = () => {
           )}
           {loading && (
             <button
-              className="bg-black dark:bg-white rounded-xl text-white dark:text-black font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80 w-full"
+              className="mt-8 w-full rounded-xl bg-black px-4 py-2 font-medium text-white hover:bg-black/80 dark:bg-white dark:text-black sm:mt-10"
               disabled
             >
               <LoadingDots color="white" style="large" />
@@ -103,18 +103,18 @@ const Home: NextPage = () => {
           reverseOrder={false}
           toastOptions={{ duration: 2000 }}
         />
-        <hr className="h-px bg-gray-700 border-1 dark:bg-gray-700" />
+        <hr className="border-1 h-px bg-gray-700 dark:bg-gray-700" />
         <ResizablePanel>
           <AnimatePresence mode="wait">
-            <motion.div className="space-y-10 my-10">
+            <motion.div className="my-10 space-y-10">
               {generatedTexts && (
                 <>
-                  <h2 className="sm:text-4xl text-3xl font-bold text-slate-900 dark:text-slate-100 mx-auto text-center">
+                  <h2 className="mx-auto text-center text-3xl font-bold text-slate-900 dark:text-slate-100 sm:text-4xl">
                     Here&apos;s your corrected text.
                   </h2>
-                  <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
+                  <div className="mx-auto flex max-w-xl flex-col items-center justify-center space-y-8">
                     <div
-                      className="bg-white dark:bg-black rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border"
+                      className="cursor-copy rounded-xl border bg-white p-4 shadow-md transition hover:bg-gray-100 dark:bg-black"
                       onClick={() => {
                         navigator.clipboard.writeText(generatedTexts);
                         toast("Bio copied to clipboard", {

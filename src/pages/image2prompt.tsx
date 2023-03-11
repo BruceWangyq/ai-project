@@ -51,7 +51,7 @@ const Home: NextPage = () => {
 
   return (
     <Layout>
-      <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-900 dark:text-slate-200 sm:text-6xl mb-5 text-center">
+      <h1 className="font-display mx-auto mb-5 max-w-4xl text-center text-4xl font-bold tracking-normal text-slate-900 dark:text-slate-200 sm:text-6xl">
         Turn your photo into a prompt
       </h1>
       {!originalPhoto && <UploadDropZone />}
@@ -60,12 +60,12 @@ const Home: NextPage = () => {
           <Image
             src={originalPhoto}
             alt="originalPhoto"
-            className="rounded-2xl relative"
+            className="relative rounded-2xl"
             width={475}
             height={475}
           />
           <button
-            className="bordered-full bg-black text-white font-medium px-4 pt-2 pb-3 mt-8 hover:bg-black/80 w-40"
+            className="bordered-full mt-8 w-40 bg-black px-4 pt-2 pb-3 font-medium text-white hover:bg-black/80"
             onClick={() => {
               setOriginalPhoto(null), setPrompt(null);
             }}
