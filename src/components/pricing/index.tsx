@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import SectionTitle from "@/components/common/SectionTitle";
 
@@ -26,7 +28,7 @@ const Pricing = () => {
               onClick={() => setIsMonthly(true)}
               className={`${
                 isMonthly
-                  ? "pointer-events-none text-primary text-black dark:text-white"
+                  ? "text-primary pointer-events-none text-black dark:text-white"
                   : "text-black dark:text-white"
               } mr-4 cursor-pointer text-base font-semibold`}
             >
@@ -37,11 +39,11 @@ const Pricing = () => {
               className="flex cursor-pointer items-center"
             >
               <div className="relative">
-                <div className="h-5 w-14 rounded-full bg-black dark:bg-white shadow-inner"></div>
+                <div className="h-5 w-14 rounded-full bg-black shadow-inner dark:bg-white"></div>
                 <div
                   className={`${
                     isMonthly ? "" : "translate-x-full"
-                  } shadow-switch-1 absolute left-0 top-[-4px] flex h-7 w-7 items-center justify-center rounded-full bg-primary transition`}
+                  } shadow-switch-1 bg-primary absolute left-0 top-[-4px] flex h-7 w-7 items-center justify-center rounded-full transition`}
                 >
                   <span className="active h-4 w-4 rounded-full bg-white dark:bg-black"></span>
                 </div>
@@ -52,7 +54,7 @@ const Pricing = () => {
               className={`${
                 isMonthly
                   ? "text-black dark:text-white"
-                  : "pointer-events-none text-primary text-black dark:text-white"
+                  : "text-primary pointer-events-none text-black dark:text-white"
               } ml-4 cursor-pointer text-base font-semibold`}
             >
               Yearly
@@ -60,7 +62,7 @@ const Pricing = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-2 max-w-[85%] mx-auto">
+        <div className="mx-auto grid max-w-[85%] grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-2">
           <PricingBox
             packageName="Personal"
             price={isMonthly ? "9" : "99"}
