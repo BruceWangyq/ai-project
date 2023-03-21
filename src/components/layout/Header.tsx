@@ -1,19 +1,18 @@
 "use client";
 
-import Link from "next/link";
-import menuData from "./menuData";
-import React, { useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
 
-import { useState } from "react";
-import ThemeToggler from "../ThemeToggler";
-import { AnimatePresence } from "framer-motion";
+import { FADE_IN_ANIMATION_SETTINGS } from "@/lib/motion";
 
+import { AnimatePresence, motion } from "framer-motion";
 import { useSession } from "next-auth/react";
-import { useSignInModal } from "./sign-in-modal";
-import { motion } from "framer-motion";
+import Link from "next/link";
+
+import ThemeToggler from "../ThemeToggler";
+
 import UserDropdown from "./UserDropdown";
-import { FADE_IN_ANIMATION_SETTINGS } from "@/utils/motion";
+import menuData from "./menuData";
+import { useSignInModal } from "./sign-in-modal";
 
 export default function Header() {
   // Navbar toggle

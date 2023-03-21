@@ -1,10 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
+
+import { options, uploader } from "@/lib/uploader";
+
+import Image from "next/image";
 import { UploadDropzone } from "react-uploader";
-import Layout from "@/components/layout";
-import { options, uploader } from "@/utils/uploader";
 
 export default function Page() {
   const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
@@ -51,7 +52,7 @@ export default function Page() {
   }
 
   return (
-    <Layout>
+    <>
       <h1 className="font-display mx-auto mb-5 max-w-4xl text-center text-4xl font-bold tracking-normal text-slate-900 dark:text-slate-200 sm:text-6xl">
         Turn your photo into a prompt
       </h1>
@@ -80,6 +81,6 @@ export default function Page() {
           <p>{prompt}</p>
         </div>
       )}
-    </Layout>
+    </>
   );
 }

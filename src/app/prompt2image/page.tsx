@@ -1,9 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
+
+import { Button } from "@/components/ui/Button";
+import LoadingDots from "@/components/ui/LoadingDots";
+import { Textarea } from "@/components/ui/Textarea";
+
 import Image from "next/image";
-import Layout from "@/components/layout";
-import LoadingDots from "@/components/common/LoadingDots";
 
 export default function Page() {
   const [prediction, setPrediction] = useState<string | null>(null);
@@ -36,7 +39,7 @@ export default function Page() {
   };
 
   return (
-    <Layout>
+    <>
       <div className="m-auto  max-w-3xl p-8">
         <h1 className="mb-4 max-w-2xl text-center text-4xl font-bold text-slate-900 dark:text-slate-100 sm:text-6xl">
           Dream something with Stable-Diffusion
@@ -48,32 +51,26 @@ export default function Page() {
           </p>
         </div>
 
-        <form className="mb-8 flex" onSubmit={handleSubmit}>
-          <textarea
+        <form
+          className="mb-8 flex items-center justify-center"
+          onSubmit={handleSubmit}
+        >
+          <Textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             name="prompt"
             placeholder=" e.g. An astronaut riding a octopus on moon artstation, hd, dramatic
             lighting, detailed"
-            className="mr-4 h-24 w-full rounded-md border-2 border-gray-300 bg-white p-2 shadow-sm focus:border-black focus:ring-black"
+            className="mr-4"
           />
           {loading ? (
-            <button
-              disabled
-              type="submit"
-              className="box-border cursor-pointer rounded-md border-none bg-gray-300 p-4 text-lg hover:bg-gray-400"
-            >
-              <span className="pt-4">
+            <Button disabled type="submit">
+              <span className="pt-4 mx-auto">
                 <LoadingDots color="white" style="large" />
               </span>
-            </button>
+            </Button>
           ) : (
-            <button
-              type="submit"
-              className="box-border cursor-pointer rounded-md border-none bg-gray-300 p-4 text-lg hover:bg-gray-400"
-            >
-              Go!
-            </button>
+            <Button type="submit">Go!</Button>
           )}
         </form>
 
@@ -102,6 +99,6 @@ export default function Page() {
           </div>
         )}
       </div>
-    </Layout>
+    </>
   );
 }
