@@ -2,11 +2,10 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { NextPage } from "next";
 import Layout from "@/components/layout";
 import LoadingDots from "@/components/common/LoadingDots";
 
-const Home: NextPage = () => {
+export default function Page() {
   const [prediction, setPrediction] = useState<string | null>(null);
   const [error, setError] = useState(null);
   const [input, setInput] = useState<string>("");
@@ -105,6 +104,4 @@ const Home: NextPage = () => {
       </div>
     </Layout>
   );
-};
-
-export default Home;
+}

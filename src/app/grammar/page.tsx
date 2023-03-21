@@ -9,7 +9,7 @@ import Layout from "@/components/layout";
 import LoadingDots from "@/components/common/LoadingDots";
 import ResizablePanel from "@/components/common/ResizablePanel";
 
-const Home: NextPage = () => {
+export default function Page() {
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState("");
   const [generatedTexts, setGeneratedTexts] = useState<string>("");
@@ -137,6 +137,4 @@ const Home: NextPage = () => {
       </div>
     </Layout>
   );
-};
-
-export default Home;
+}
