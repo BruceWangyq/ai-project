@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import SectionTitle from "@/components/common/SectionTitle";
+import SectionTitle from "@/components/ui/SectionTitle";
 
 import OfferList from "./OfferList";
 import PricingBox from "./PricingBox";

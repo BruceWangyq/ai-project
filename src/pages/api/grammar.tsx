@@ -1,5 +1,6 @@
+import { OpenAIStream, OpenAIStreamPayload } from "@/lib/OpenAIStream";
+
 import type { NextRequest } from "next/server";
-import { OpenAIStream, OpenAIStreamPayload } from "@/utils/OpenAIStream";
 
 if (!process.env.OPENAI_API_KEY) {
   throw new Error("Missing env var from OpenAI");

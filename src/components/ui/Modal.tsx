@@ -5,10 +5,13 @@ import {
   useEffect,
   useRef,
 } from "react";
+
+import useWindowSize from "@/hooks/use-window-size";
+
 import FocusTrap from "focus-trap-react";
 import { AnimatePresence, motion } from "framer-motion";
+
 import Leaflet from "./Leaflet";
-import useWindowSize from "@/hooks/use-window-size";
 
 export default function Modal({
   children,

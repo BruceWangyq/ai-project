@@ -1,18 +1,17 @@
-import Layout from "@/components/layout";
-import Hero from "@/components/hero";
-import Features from "@/components/features";
 import Brands from "@/components/brands";
-import Testimonials from "@/components/testimonials";
+import Features from "@/components/features";
+import Hero from "@/components/hero";
 import Pricing from "@/components/pricing";
+import Testimonials from "@/components/testimonials";
 
 export default function Home() {
   return (
-    <Layout>
+    <>
       <Hero />
       <Features />
       <Brands />
       <Testimonials />
       <Pricing />
-    </Layout>
+    </>
   );
 }

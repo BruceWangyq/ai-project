@@ -1,13 +1,14 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
-import type { NextPage } from "next";
 import { useState } from "react";
-import { Toaster, toast } from "react-hot-toast";
-import Layout from "@/components/layout";
 
-import LoadingDots from "@/components/common/LoadingDots";
-import ResizablePanel from "@/components/common/ResizablePanel";
+import { Button } from "@/components/ui/Button";
+import LoadingDots from "@/components/ui/LoadingDots";
+import ResizablePanel from "@/components/ui/ResizablePanel";
+import { Textarea } from "@/components/ui/Textarea";
+
+import { AnimatePresence, motion } from "framer-motion";
+import { Toaster, toast } from "react-hot-toast";
 
 export default function Page() {
   const [loading, setLoading] = useState(false);
@@ -59,7 +60,7 @@ export default function Page() {
   };
 
   return (
-    <Layout>
+    <>
       <div className="flex flex-col items-center justify-center">
         <h1 className="max-w-2xl text-center text-4xl font-bold text-slate-900 dark:text-slate-100 sm:text-6xl">
           Correct your grammar in seconds
@@ -71,34 +72,33 @@ export default function Page() {
               Input your text below and we&apos;ll correct it for you.
             </p>
           </div>
-          <textarea
+          <Textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             rows={4}
-            className="my-5 mx-auto h-24 w-full rounded-md border-gray-300 bg-white shadow-sm focus:border-black focus:ring-black"
+            className="mt-4"
             placeholder={
               "e.g. This is a sentence have a lot of grammar mistake."
             }
           />
 
-          {!loading && (
-            <div className="flex justify-center">
-              <button
-                className="mx-2 mt-8 w-1/3 rounded-xl bg-black px-4 py-2 font-medium text-white hover:bg-black/80 dark:bg-white dark:text-black sm:mt-10"
+          <div className="flex justify-center mt-8">
+            {!loading ? (
+              <Button
+                // className="mx-2 mt-8 w-1/3 rounded-xl bg-black px-4 py-2 font-medium text-white hover:bg-black/80 dark:bg-white dark:text-black sm:mt-10"
                 onClick={(e) => generate(e)}
               >
                 Correct Grammar
-              </button>
-            </div>
-          )}
-          {loading && (
-            <button
-              className="mt-8 w-full rounded-xl bg-black px-4 py-2 font-medium text-white hover:bg-black/80 dark:bg-white dark:text-black sm:mt-10"
-              disabled
-            >
-              <LoadingDots color="white" style="large" />
-            </button>
-          )}
+              </Button>
+            ) : (
+              <Button
+                // className="mt-8 w-full rounded-xl bg-black px-4 py-2 font-medium text-white hover:bg-black/80 dark:bg-white dark:text-black sm:mt-10"
+                disabled
+              >
+                <LoadingDots color="white" style="large" />
+              </Button>
+            )}
+          </div>
         </div>
         <Toaster
           position="top-center"
@@ -135,6 +135,6 @@ export default function Page() {
           </AnimatePresence>
         </ResizablePanel>
       </div>
-    </Layout>
+    </>
   );
 }

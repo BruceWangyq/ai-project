@@ -1,19 +1,18 @@
 "use client";
 
+import { useState } from "react";
+
+import { CompareSlider } from "@/components/CompareSlider";
+import LoadingDots from "@/components/ui/LoadingDots";
+import ResizablePanel from "@/components/ui/ResizablePanel";
+import Toggle from "@/components/ui/Toggle";
+import appendNewToName from "@/lib/appendNewToName";
+import downloadPhoto from "@/lib/downloadPhoto";
+import { options, uploader } from "@/lib/uploader";
+
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
 import { UploadDropzone } from "react-uploader";
-import { uploader, options } from "@/utils/uploader";
-import { CompareSlider } from "@/components/CompareSlider";
-
-import LoadingDots from "@/components/common/LoadingDots";
-
-import Toggle from "@/components/common/Toggle";
-import appendNewToName from "@/utils/appendNewToName";
-import downloadPhoto from "@/utils/downloadPhoto";
-import Layout from "@/components/layout";
-import ResizablePanel from "@/components/common/ResizablePanel";
 
 export default function Page() {
   const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
@@ -65,7 +64,7 @@ export default function Page() {
   }
 
   return (
-    <Layout>
+    <>
       <h1 className="font-display mx-auto mt-20 mb-5 max-w-4xl text-4xl font-bold tracking-normal text-slate-900 dark:text-slate-200 sm:text-6xl">
         See your age progression
       </h1>
@@ -172,6 +171,6 @@ export default function Page() {
           </motion.div>
         </AnimatePresence>
       </ResizablePanel>
-    </Layout>
+    </>
   );
 }

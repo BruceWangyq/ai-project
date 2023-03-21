@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import redis from "@/utils/redis";
+import redis from "@/lib/redis";
 import { Ratelimit } from "@upstash/ratelimit";
 import requestIp from "request-ip";
 
