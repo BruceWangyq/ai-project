@@ -1,11 +1,12 @@
-import { NextPage } from "next";
+"use client";
+
 import Image from "next/image";
 import { useState } from "react";
 import { UploadDropzone } from "react-uploader";
 import Layout from "@/components/layout";
 import { options, uploader } from "@/utils/uploader";
 
-const Home: NextPage = () => {
+export default function Page() {
   const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
   const [prompt, setPrompt] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -81,6 +82,4 @@ const Home: NextPage = () => {
       )}
     </Layout>
   );
-};
-
-export default Home;
+}

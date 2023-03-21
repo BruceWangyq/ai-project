@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import menuData from "./menuData";
 import React, { useEffect } from "react";

@@ -1,9 +1,10 @@
+"use client";
+
 import { AnimatePresence, motion } from "framer-motion";
-import { NextPage } from "next";
 import Image from "next/image";
 import { useState } from "react";
 import { UploadDropzone } from "react-uploader";
-import { uploader, options } from "../utils/uploader";
+import { uploader, options } from "@/utils/uploader";
 import { CompareSlider } from "@/components/CompareSlider";
 
 import LoadingDots from "@/components/common/LoadingDots";
@@ -14,7 +15,7 @@ import downloadPhoto from "@/utils/downloadPhoto";
 import Layout from "@/components/layout";
 import ResizablePanel from "@/components/common/ResizablePanel";
 
-const Home: NextPage = () => {
+export default function Page() {
   const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
   const [transformedImage, setTransformedImage] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -173,6 +174,4 @@ const Home: NextPage = () => {
       </ResizablePanel>
     </Layout>
   );
-};
-
-export default Home;
+}
