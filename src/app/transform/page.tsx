@@ -1,9 +1,11 @@
+"use client";
+
 import { AnimatePresence, motion } from "framer-motion";
 import { NextPage } from "next";
 import Image from "next/image";
 import { useState } from "react";
 import { UploadDropzone } from "react-uploader";
-import { uploader, options } from "../utils/uploader";
+import { uploader, options } from "@/utils/uploader";
 import { CompareSlider } from "@/components/CompareSlider";
 
 import LoadingDots from "@/components/common/LoadingDots";

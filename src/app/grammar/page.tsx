@@ -1,3 +1,5 @@
+"use client";
+
 import { AnimatePresence, motion } from "framer-motion";
 import type { NextPage } from "next";
 import { useState } from "react";
