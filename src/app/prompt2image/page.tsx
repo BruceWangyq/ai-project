@@ -63,11 +63,10 @@ export default function Page() {
             lighting, detailed"
             className="mr-4"
           />
+
           {loading ? (
             <Button disabled type="submit">
-              <span className="pt-4 mx-auto">
-                <LoadingDots color="white" style="large" />
-              </span>
+              <LoadingDots color="white" style="large" />
             </Button>
           ) : (
             <Button type="submit">Go!</Button>
