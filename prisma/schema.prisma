@@ -45,6 +45,11 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+
+  stripeCustomerId       String?   @unique 
+  stripeSubscriptionId   String?   @unique 
+  stripePriceId          String?   
+  stripeCurrentPeriodEnd DateTime? 
 }
 
 model VerificationToken {
