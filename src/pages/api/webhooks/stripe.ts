@@ -1,4 +1,4 @@
-import  prisma  from "@/lib/prisma";
+import prisma from "@/lib/prisma";
 import { stripe } from "@/lib/stripe";
 
 import { NextApiRequest, NextApiResponse } from "next";
@@ -27,7 +27,7 @@ export default async function handler(
       signature,
       process.env.STRIPE_WEBHOOK_SECRET || ""
     );
-  } catch (error) {
+  } catch (error: any) {
     return res.status(400).send(`Webhook Error: ${error.message}`);
   }
 

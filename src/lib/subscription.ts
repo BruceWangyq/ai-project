@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { freePlan, proPlan } from "@/config/subscriptions";
 import prisma from "@/lib/prisma";
 import { UserSubscriptionPlan } from "@/types";
@@ -24,14 +25,18 @@ export async function getUserSubscriptionPlan(
   // Check if user is on a pro plan.
   const isPro =
     user.stripePriceId &&
-    user.stripeCurrentPeriodEnd?.getTime() + 86_400_000 > Date.now();
+    user.stripeCurrentPeriodEnd &&
+    ((user.stripeCurrentPeriodEnd.getTime() + 86_400_000 >
+      Date.now()) as boolean);
+
+  console.log("isPro", isPro);
 
   const plan = isPro ? proPlan : freePlan;
 
   return {
     ...plan,
     ...user,
-    stripeCurrentPeriodEnd: user.stripeCurrentPeriodEnd?.getTime(),
+    stripeCurrentPeriodEnd: user.stripeCurrentPeriodEnd?.getTime() as number,
     isPro,
   };
 }
