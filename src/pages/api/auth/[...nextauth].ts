@@ -1,23 +1,6 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import prisma from "@/lib/prisma";
-import GoogleProvider from "next-auth/providers/google";
+import { authOptions } from "@/lib/auth";
 
-export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma),
-  providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
-      authorization: {
-        params: {
-          prompt: "consent",
-          access_type: "offline",
-          response_type: "code",
-        },
-      },
-    }),
-  ],
-};
+import NextAuth from "next-auth";
 
+// @see ./lib/auth
 export default NextAuth(authOptions);
