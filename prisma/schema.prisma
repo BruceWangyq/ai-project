@@ -50,6 +50,8 @@ model User {
   stripeSubscriptionId   String?   @unique 
   stripePriceId          String?   
   stripeCurrentPeriodEnd DateTime? 
+
+  post          String[]
 }
 
 model VerificationToken {
