@@ -53,10 +53,10 @@ export default function Header() {
       <SignInModal />
       <header
         className={`header top-0 left-0 z-40 flex w-full items-center justify-center bg-transparent px-2 ${
-          sticky
-            ? "shadow-sticky dark:!bg-primary !fixed !z-[9999] !bg-white !bg-opacity-80 backdrop-blur-sm !transition dark:!bg-opacity-20"
-            : "absolute"
-        }`}
+                  sticky
+                    ? "shadow-sticky dark:!bg-primary !fixed !z-[9999] !bg-white !bg-opacity-80 backdrop-blur-sm !transition dark:!bg-opacity-20"
+                    : "absolute"
+                } lg:flex-row md:flex-col sm:flex-col`}
       >
         <div className="container relative -mx-4 flex h-20 w-full items-center justify-between">
           <div className="w-full px-2 lg:ml-16 xl:mr-12">
@@ -94,10 +94,10 @@ export default function Header() {
               <nav
                 id="navbarCollapse"
                 className={`navbar border-body-color/50 dark:border-body-color/20 absolute right-0 z-30 w-[250px] rounded border-[.5px] bg-white py-4 px-6 duration-300 dark:bg-black lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 lg:opacity-100 ${
-                  navbarOpen
-                    ? "visibility top-full opacity-100"
-                    : "invisible top-[120%] opacity-0"
-                }`}
+                                  navbarOpen
+                                    ? "visibility top-full opacity-100"
+                                    : "invisible top-[120%] opacity-0"
+                                } lg:flex-row md:flex-col sm:flex-col`}
               >
                 <ul className="block lg:flex lg:space-x-12">
                   {menuData.map((menuItem, index) => (
